@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import('next').NextConfig} */
 const withPWA = require('next-pwa');
 const nextConfig = withPWA({
@@ -10,7 +11,6 @@ const nextConfig = withPWA({
     disable: process.env.NODE_ENV === 'development',
     register: true,
     skipWaiting: true,
-    scope: '/app',
     dynamicStartUrl: false,
   },
 });
