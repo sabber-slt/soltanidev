@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.soltanidev.www.twa",
+      "sha256_cert_fingerprints": [
+        "CE:DF:79:5D:3D:68:EE:3E:B6:C3:64:76:28:B3:F4:5C:2E:0E:6B:67:D1:DE:D3:0B:C6:F9:29:67:5C:93:F0:4A"
+      ]
+    }
+  }
+]
