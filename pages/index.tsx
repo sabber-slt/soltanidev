@@ -12,7 +12,6 @@ import Intro from '../components/base/Intro';
 import LandScreen from '../components/base/LandScreen';
 import { Ibase } from '../types/publicInterfaces';
 import { fetchPublic } from '../utils/useFetch';
-
 import Article from '../components/base/Article';
 import Footer from '../components/Footer';
 import Loading from '../components/animation/Loading';
