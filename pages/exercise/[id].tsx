@@ -14,6 +14,8 @@ import Footer from '../../components/Footer';
 import Loading from '../../components/animation/Loading';
 import { Code } from '@chakra-ui/react';
 
+//asdasd
+
 const Home: NextPage = () => {
   const router = useRouter();
   const id = router.query.id;
