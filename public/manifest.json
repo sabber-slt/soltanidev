@@ -1,0 +1,77 @@
+{
+  "screenshots": [
+    {
+      "src": "https://res.cloudinary.com/dupfwlkgb/image/upload/v1656669245/screen_z0ktaf.png",
+      "sizes": "2880x1800",
+      "type": "image/png",
+      "description": "Sabber Soltani Full-Stack Web Developer"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "SoltaniDev",
+      "short_name": "SoltaniDev",
+      "description": "Sabber Soltani Full-Stack Web Developer",
+      "icons": [
+        {
+          "src": "icons/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "description": "Sabber Soltani Full-Stack Web Developer",
+  "name": "SoltaniDev",
+  "short_name": "SoltaniDev",
+  "theme_color": "#35515E",
+  "background_color": "#35515E",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "display_override": ["fullscreen", "minimal-ui"],
+  "icons": [
+    {
+      "src": "icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+
+    {
+      "src": "icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -38,7 +38,7 @@ const Comments: React.FC<{ src: Iinfo[] }> = ({ src }) => {
               w="72"
             >
               <Box
-                bg={item.id === 1 || item.id === 3 ? 'gray.50' : 'green.800'}
+                bg={item.id === 1 || item.id === 3 ? '#D81B60' : '#35515E'}
                 position="relative"
                 w="72"
                 h="96"
@@ -50,7 +50,6 @@ const Comments: React.FC<{ src: Iinfo[] }> = ({ src }) => {
                     w="28"
                     h="28"
                     objectFit="cover"
-                    borderRadius={100}
                     src={item.img}
                   />
                 </Center>
@@ -58,7 +57,7 @@ const Comments: React.FC<{ src: Iinfo[] }> = ({ src }) => {
                   as={motion.div}
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  color={item.id === 1 || item.id === 3 ? 'green.800' : 'white'}
+                  color={'white'}
                   textAlign="center"
                   fontSize="xl"
                   my="4"
@@ -72,7 +71,7 @@ const Comments: React.FC<{ src: Iinfo[] }> = ({ src }) => {
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition="0.5s linear "
-                  color={item.id === 1 || item.id === 3 ? 'green.800' : 'white'}
+                  color={'white'}
                   textAlign="center"
                   fontSize="sm"
                   zIndex={100}

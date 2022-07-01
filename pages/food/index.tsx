@@ -18,20 +18,21 @@ import {
   useQuery,
 } from 'react-query';
 import { useRouter } from 'next/router';
-import { ArticleProps } from '../../types/zodPublic';
-import { fetchArticls, fetchFoods } from '../../utils/useFetch';
+import { ProjectProps } from '../../types/zodPublic';
+import { fetchProjects } from '../../utils/useFetch';
 import Footer from '../../components/Footer';
 import Loading from '../../components/animation/Loading';
 
 const Home: NextPage = () => {
   const router = useRouter();
-  const { data, isLoading, error }: UseBaseQueryResult<ArticleProps[]> =
-    useQuery<ArticleProps[], Error>('foods', fetchFoods);
+  const { data, isLoading, error }: UseBaseQueryResult<ProjectProps[]> =
+    useQuery<ProjectProps[], Error>('projects', fetchProjects);
   if (isLoading) return <Loading />;
   if (error) return <Box>Error!</Box>;
+  console.log(data);
   return (
     <Center display="flex" flexDirection="column">
-      <HStack py="5" bg="green.800" w="full">
+      <HStack py="5" bg="#35515E" w="full">
         <Center w="full">
           <VStack
             as={motion.div}
@@ -41,22 +42,21 @@ const Home: NextPage = () => {
             pl={['5', '0']}
           >
             <Image
-              style={{ transform: 'rotate(15deg)' }}
               mr="5"
               alt=""
               w={['16', '32']}
               ml={['0', '40']}
               h={['20', '40']}
-              src="/images/av.png"
+              src="/soltanidev.png"
             />
             <Text
-              fontSize={['xl', '4xl']}
+              fontSize={['sm', '4xl']}
               pl={['0', '40']}
               pr="5"
               color="gray.50"
               textAlign="center"
             >
-              Avocado
+              SoltaniDev
             </Text>
             <Text
               fontSize={['sm', 'xl']}
@@ -73,16 +73,15 @@ const Home: NextPage = () => {
             w={['72', '50vw']}
             bg="green.500"
             boxShadow="xl"
-            objectFit="cover"
             borderRadius="12"
             h={['56', '70vh']}
-            src="https://res.cloudinary.com/dupfwlkgb/image/upload/v1656404929/pexels-photo-2641886_ryzktg.jpg"
+            src="https://res.cloudinary.com/dupfwlkgb/image/upload/v1656405067/pexels-photo-4473622_a4ljw7.jpg"
           />
         </Center>
       </HStack>
       <Center py="10" display="flex" flexDirection="column" mt="5">
-        <Text py="10" fontSize={['xl', '3xl']} color="green.800">
-          آموزش های آشپزی آووکادو
+        <Text py="10" fontSize={['xl', '3xl']} color="#35515E">
+          مجموعه مقالات سلامت و تناسب اندام
         </Text>
         <Grid
           templateColumns={['repeat(1, 1fr)', 'repeat(3, 1fr)']}
@@ -97,13 +96,13 @@ const Home: NextPage = () => {
               key={item.id}
               boxShadow="xl"
             >
-              <Image alt="" w="96" h="72" src={item.img1} />
+              <Image alt="" w="96" h="72" src={item.img} />
               <Box position="absolute">
-                <Box h="72" bg="rgba(34,84,61,0.4)">
+                <Box h="72" bg="rgba(53,81,94,0.4)">
                   <Center h="72">
                     <Text
                       px="5"
-                      fontSize="2xl"
+                      fontSize="xl"
                       w="96"
                       color="white"
                       textAlign="center"
@@ -116,14 +115,13 @@ const Home: NextPage = () => {
                       colorScheme="white"
                       variant="outline"
                       mt="32"
-                      onClick={() => router.push(`/food/${item.id}`)}
+                      onClick={() => router.push(`/projects/${item.id}`)}
                       color="white"
                     >
                       مشاهده مقاله
                     </Button>
                   </Center>
                 </Box>
-                <Center></Center>
               </Box>
             </Flex>
           ))}
@@ -137,7 +135,7 @@ const Home: NextPage = () => {
 export default Home;
 export const getStaticProps = async () => {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery('foods', fetchFoods);
+  await queryClient.prefetchQuery('article', fetchProjects);
   return {
     props: {
       dehydrateState: dehydrate(queryClient),

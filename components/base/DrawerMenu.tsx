@@ -6,10 +6,11 @@ import {
   DrawerBody,
   DrawerCloseButton,
   DrawerContent,
-  DrawerFooter,
+  Image,
   DrawerHeader,
   DrawerOverlay,
   useDisclosure,
+  Text,
 } from '@chakra-ui/react';
 import React from 'react';
 import { useRouter } from 'next/router';
@@ -27,7 +28,7 @@ const DrawerMenu: React.FC = () => {
         right="3"
         zIndex={110}
         tabIndex={-1}
-        bg="rgba(34,84,61,0.5)"
+        bg="rgba(53,81,94,0.5)"
         onClick={onOpen}
       >
         <HamburgerIcon w="6" h="8" color="white" />
@@ -39,9 +40,22 @@ const DrawerMenu: React.FC = () => {
         onClose={onClose}
       >
         <DrawerOverlay />
-        <DrawerContent bg="rgba(34,84,61,0.8)">
+        <DrawerContent bg="rgba(53,81,94,0.7)">
           <DrawerCloseButton color="white" />
-          <DrawerHeader color="white">Avocado</DrawerHeader>
+          <DrawerHeader color="white">
+            <Center>
+              <Image
+                alt="صابر سلطانی"
+                src="/soltanidev.png"
+                borderRadius="xl"
+                w="20"
+                h="20"
+              />
+              <Text as="h2" fontSize="lg" px="2">
+                SoltaniDev.com
+              </Text>
+            </Center>
+          </DrawerHeader>
 
           <DrawerBody>
             <Center display="flex " flexDirection="column">
@@ -56,27 +70,17 @@ const DrawerMenu: React.FC = () => {
                 خانه
               </Button>
               <Button
-                onClick={() => router.push('/auth/register')}
+                onClick={() => router.push('/projects')}
                 w="40"
                 h="14"
                 mt="5"
                 colorScheme="white"
                 border="2px"
               >
-                ورود/ثبت نام
+                پروژه های برتر
               </Button>
               <Button
-                onClick={() => router.push('/article')}
-                w="40"
-                h="14"
-                mt="5"
-                colorScheme="white"
-                border="2px"
-              >
-                مقالات تندرستی
-              </Button>
-              <Button
-                onClick={() => router.push('/food')}
+                onClick={() => router.push('/projects')}
                 w="40"
                 h="14"
                 mt="5"

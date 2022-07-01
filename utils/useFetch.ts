@@ -1,4 +1,4 @@
-export const API = 'https://avocado.hasura.app/v1/graphql';
+export const API = 'https://soltanidev.hasura.app/v1/graphql';
 export const HEADERS = {
   'Content-Type': 'application/json',
   'X-Hasura-Role': 'public',
@@ -26,7 +26,7 @@ export const fetchPublic = async () => {
   const data = await res.json();
   return data?.data?.base;
 };
-export const fetchArticls = async () => {
+export const fetchProjects = async () => {
   const res = await fetch(API, {
     method: 'POST',
     headers: {
@@ -35,11 +35,14 @@ export const fetchArticls = async () => {
     },
     body: JSON.stringify({
       query: `query MyQuery {
-        magazine {
-          cat
-          content
+        project(distinct_on: id) {
+          code1
+          code2
+          content1
           content2
+          desc
           id
+          img
           img1
           img2
           title
@@ -49,9 +52,9 @@ export const fetchArticls = async () => {
     }),
   });
   const data = await res.json();
-  return data?.data?.magazine;
+  return data?.data?.project;
 };
-export const fetchArticlsByID = async (id: string) => {
+export const fetchProjectsById = async (id: string) => {
   const res = await fetch(API, {
     method: 'POST',
     headers: {
@@ -59,14 +62,19 @@ export const fetchArticlsByID = async (id: string) => {
       'X-Hasura-Role': 'public',
     },
     body: JSON.stringify({
-      query: `query MyQuery($id:String){
-        magazine(where: {id: {_cast: {String: {_eq: $id}}}}) {
-          cat
-          content
+      query: `query MyQuery($id:String) {
+        project(where: {id: {_cast: {String: {_eq: $id}}}}) {
+          code1
+          code2
+          content1
           content2
+          content3
+          desc
           id
+          img
           img1
           img2
+          img3
           title
         }
       }
@@ -77,7 +85,7 @@ export const fetchArticlsByID = async (id: string) => {
     }),
   });
   const data = await res.json();
-  return data?.data?.magazine;
+  return data?.data?.project;
 };
 
 export const fetchFoods = async () => {

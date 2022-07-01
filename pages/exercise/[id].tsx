@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GetStaticProps, NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { Box, Center, Image, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import {
@@ -8,83 +8,113 @@ import {
   UseBaseQueryResult,
   useQuery,
 } from 'react-query';
-import { fetchExerciseById } from '../../utils/useFetch';
-import { ArticleProps } from '../../types/zodPublic';
+import { fetchProjectsById } from '../../utils/useFetch';
+import { ProjectProps } from '../../types/zodPublic';
 import Footer from '../../components/Footer';
 import Loading from '../../components/animation/Loading';
+import { Code } from '@chakra-ui/react';
 
 const Home: NextPage = () => {
   const router = useRouter();
   const id = router.query.id;
 
-  const { data, isLoading, error }: UseBaseQueryResult<ArticleProps[]> =
-    useQuery<ArticleProps[], Error>(['exerciseById', id], () =>
-      fetchExerciseById(`${id}`)
+  const { data, isLoading, error }: UseBaseQueryResult<ProjectProps[]> =
+    useQuery<ProjectProps[], Error>(['articleById', id], () =>
+      fetchProjectsById(`${id}`)
     );
   if (isLoading) return <Loading />;
   if (error) return <Box>Error!</Box>;
-
+  console.log(data);
   return (
-    <>
-      <Center display="flex " flexDirection="column">
-        <Box
-          display="flex"
-          flexDirection={['column', 'row']}
+    <Center display="flex " flexDirection="column">
+      <Box
+        display="flex"
+        flexDirection={['column', 'row']}
+        w="full"
+        bg="#35515E"
+      >
+        <Image src={data![0].img} w={['100vw', '60vw']} h="96" />
+        <Center
+          display="flex "
+          flexDirection="column"
+          h={['28', '96']}
           w="full"
-          bg="green.800"
         >
-          <Image src={data![0].img1} w={['100vw', '60vw']} h="96" />
-          <Center
-            display="flex "
-            flexDirection="column"
-            h={['28', '96']}
-            w="full"
+          <Text
+            fontSize={['xl', '3xl']}
+            textAlign="center"
+            px="5"
+            color="white"
           >
-            <Text
-              fontSize={['xl', '3xl']}
-              textAlign="center"
-              px="5"
-              color="white"
-            >
-              {data![0].title}
-            </Text>
-            <Text
-              fontSize={['md', '2xl']}
-              textAlign="center"
-              px="5"
-              color="white"
-            >
-              Avocado
-            </Text>
-          </Center>
-        </Box>
-        <Text
+            {data![0].title}
+          </Text>
+          <Text
+            fontSize={['md', '2xl']}
+            textAlign="center"
+            px="5"
+            color="white"
+          >
+            SoltaniDev
+          </Text>
+        </Center>
+      </Box>
+      <Text
+        whiteSpace="break-spaces"
+        fontSize={['lg', '2xl']}
+        color="#35515E"
+        px={['3', '8']}
+        pt="10"
+      >
+        {data![0].content1}
+      </Text>
+
+      {/* <Code
+          bg="gray.700"
+          color="white"
+          fontWeight="bold"
+          p="4"
+          borderRadius="lg"
+          style={{ direction: 'ltr' }}
           whiteSpace="pre-line"
-          fontSize={['lg', '2xl']}
-          color="green.900"
-          px={['3', '8']}
-          pt="10"
         >
-          {data![0].content}
-        </Text>
-        <Image
-          my="8"
-          src={data![0].img2}
-          w={['80', '50vw']}
-          h={['80', '70vh']}
-        />
-        <Text
-          whiteSpace="pre-line"
-          fontSize={['lg', '2xl']}
-          color="green.900"
-          px={['3', '8']}
-          py="10"
-        >
-          {data![0].content2}
-        </Text>
-      </Center>
+          {data![0]?.code1}{' '}
+        </Code> */}
+
+      <Image my="8" src={data![0].img1} w={['80', '50vw']} h={['80', '70vh']} />
+
+      <Text
+        whiteSpace="pre-line"
+        fontSize={['lg', '2xl']}
+        color="#35515E"
+        px={['3', '8']}
+        py="10"
+      >
+        {data![0].content2}
+      </Text>
+      <Image
+        my="8"
+        src={data![0]?.img2 || ''}
+        w={['80', '50vw']}
+        h={['80', '70vh']}
+      />
+      <Text
+        whiteSpace="pre-line"
+        fontSize={['lg', '2xl']}
+        color="#35515E"
+        px={['3', '8']}
+        py="10"
+      >
+        {data![0]?.content3 || ''}
+      </Text>
+      <Image
+        my="8"
+        src={data![0]?.img3 || ''}
+        w={['80', '50vw']}
+        h={['80', '70vh']}
+      />
+
       <Footer />
-    </>
+    </Center>
   );
 };
 
@@ -99,8 +129,8 @@ export const getStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const route = params?.id;
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(['exerciseById', route], () =>
-    fetchExerciseById(`${route}`)
+  await queryClient.prefetchQuery(['articleById', route], () =>
+    fetchProjectsById(`${route}`)
   );
   return {
     props: {

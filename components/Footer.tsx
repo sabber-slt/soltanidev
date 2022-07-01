@@ -12,7 +12,7 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <Box h={['70vh']} bg="green.800">
+    <Box h={['70vh']} bg="#35515E">
       <HStack justifyContent="space-around">
         <Center h={['60vh']} w="40vw">
           <Grid
@@ -65,8 +65,8 @@ const Footer: React.FC = () => {
         </Center>
         <Center h={['60vh']} w="60vw">
           <Box h={['60vhh']} color="white" textAlign="center">
-            <Text py="5" fontSize="2xl">
-              AVOCADO
+            <Text py="5" fontSize="2xl" color="#D81B60">
+              SoltaniDev
             </Text>
             <Link href="/auth/register">
               <a>
@@ -128,7 +128,7 @@ const Footer: React.FC = () => {
       </HStack>
       <Text
         fontSize={['lg', 'lg']}
-        bg="green.800"
+        bg="#35515E"
         color="white"
         pb="4"
         textAlign="center"
