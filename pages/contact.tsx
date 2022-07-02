@@ -25,11 +25,11 @@ interface Props {
 const Contact: NextPage = () => {
   const router = useRouter();
 
-  const [err, setErr] = useState('');
+  const [err] = useState('');
   const {
     handleSubmit,
     register,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm<Props>();
 
   async function onSubmit(values: Props) {

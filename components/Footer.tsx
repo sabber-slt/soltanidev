@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Center,
-  Grid,
-  HStack,
-  Image,
-  Text,
-} from '@chakra-ui/react';
+import { Box, Center, Grid, HStack, Image, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import React from 'react';
 

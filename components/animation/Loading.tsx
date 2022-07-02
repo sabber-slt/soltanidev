@@ -3,7 +3,7 @@ import * as React from 'react';
 
 const Loading = () => {
   return (
-    <Box bg="green.800" h="100vh" w="full">
+    <Box bg="#35515E" h="100vh" w="full">
       <Center h="100vh" display="flex" flexDirection="column">
         <Spinner
           thickness="4px"

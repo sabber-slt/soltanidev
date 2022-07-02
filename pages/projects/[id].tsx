@@ -12,7 +12,6 @@ import { fetchProjectsById } from '../../utils/useFetch';
 import { ProjectProps } from '../../types/zodPublic';
 import Footer from '../../components/Footer';
 import Loading from '../../components/animation/Loading';
-import { Code } from '@chakra-ui/react';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -33,7 +32,7 @@ const Home: NextPage = () => {
         w="full"
         bg="#35515E"
       >
-        <Image src={data![0].img} w={['100vw', '60vw']} h="96" />
+        <Image alt="" src={data?.[0].img} w={['100vw', '60vw']} h="96" />
         <Center
           display="flex "
           flexDirection="column"
@@ -46,7 +45,7 @@ const Home: NextPage = () => {
             px="5"
             color="white"
           >
-            {data![0].title}
+            {data?.[0].title}
           </Text>
           <Text
             fontSize={['md', '2xl']}
@@ -65,7 +64,7 @@ const Home: NextPage = () => {
         px={['3', '8']}
         pt="10"
       >
-        {data![0].content1}
+        {data?.[0].content1}
       </Text>
 
       {/* <Code
@@ -80,7 +79,13 @@ const Home: NextPage = () => {
           {data![0]?.code1}{' '}
         </Code> */}
 
-      <Image my="8" src={data![0].img1} w={['80', '50vw']} h={['80', '70vh']} />
+      <Image
+        alt=""
+        my="8"
+        src={data?.[0].img1}
+        w={['80', '50vw']}
+        h={['80', '70vh']}
+      />
 
       <Text
         whiteSpace="pre-line"
@@ -89,11 +94,12 @@ const Home: NextPage = () => {
         px={['3', '8']}
         py="10"
       >
-        {data![0].content2}
+        {data?.[0].content2}
       </Text>
       <Image
+        alt=""
         my="8"
-        src={data![0]?.img2 || ''}
+        src={data?.[0]?.img2 || ''}
         w={['80', '50vw']}
         h={['80', '70vh']}
       />
@@ -104,11 +110,12 @@ const Home: NextPage = () => {
         px={['3', '8']}
         py="10"
       >
-        {data![0]?.content3 || ''}
+        {data?.[0]?.content3 || ''}
       </Text>
       <Image
+        alt=""
         my="8"
-        src={data![0]?.img3 || ''}
+        src={data?.[0]?.img3 || ''}
         w={['80', '50vw']}
         h={['80', '70vh']}
       />
@@ -119,7 +126,7 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],
     fallback: 'blocking',

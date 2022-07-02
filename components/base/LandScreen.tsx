@@ -2,14 +2,12 @@ import { ArrowDownIcon } from '@chakra-ui/icons';
 import {
   AspectRatio,
   Box,
-  Button,
   Center,
   keyframes,
   Text,
   Image,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 
 import React from 'react';
 import { Ibase } from '../../types/publicInterfaces';

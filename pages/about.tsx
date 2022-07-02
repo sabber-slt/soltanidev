@@ -1,23 +1,10 @@
-import {
-  Box,
-  Button,
-  Center,
-  Grid,
-  HStack,
-  Image,
-  Text,
-  VStack,
-} from '@chakra-ui/react';
-import { motion } from 'framer-motion';
-import type { NextPage } from 'next';
+import { Box, Center, Grid, Image, Text, VStack } from '@chakra-ui/react';
 
-import { useRouter } from 'next/router';
+import type { NextPage } from 'next';
 
 import Footer from '../components/Footer';
 
 const Home: NextPage = () => {
-  const router = useRouter();
-
   return (
     <Box color="green.800">
       <Box p="7">
