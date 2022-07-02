@@ -18,7 +18,7 @@ const Home: NextPage = () => {
   const id = router.query.id;
 
   const { data, isLoading, error }: UseBaseQueryResult<ProjectProps[]> =
-    useQuery<ProjectProps[], Error>(['articleById', id], () =>
+    useQuery<ProjectProps[], Error>(['project', id], () =>
       fetchProjectsById(`${id}`)
     );
   if (isLoading) return <Loading />;
@@ -136,7 +136,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const route = params?.id;
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(['articleById', route], () =>
+  await queryClient.prefetchQuery(['project', route], () =>
     fetchProjectsById(`${route}`)
   );
   return {

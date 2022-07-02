@@ -34,7 +34,7 @@ const LandScreen: React.FC<{ src: Ibase }> = ({ src }) => {
         ratio={[1 / 4, 1, 1 / 2, 1 / 2]}
       >
         <video autoPlay loop muted playsInline>
-          <source src={src.video} type="video/mp4" />
+          <source src="./video.mp4" />
         </video>
       </AspectRatio>
       <Center
@@ -81,7 +81,7 @@ const LandScreen: React.FC<{ src: Ibase }> = ({ src }) => {
           zIndex={100}
           px="16"
         >
-          {src.content}
+          {src.content}zxczxczxczxczxczxc
         </Text>
         <Box as={motion.div} pt="5" animation={animation} zIndex={100}>
           <ArrowDownIcon color="#D81B60" boxSize="12" />

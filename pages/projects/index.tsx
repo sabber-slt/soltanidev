@@ -46,7 +46,8 @@ const Home: NextPage = () => {
               alt=""
               w={['16', '32']}
               ml={['0', '40']}
-              h={['20', '40']}
+              h={['16', '40']}
+              objectFit="cover"
               src="/soltanidev.png"
             />
             <Text
@@ -65,23 +66,24 @@ const Home: NextPage = () => {
               color="gray.50"
               textAlign="center"
             >
-              magazine
+              Projects
             </Text>
           </VStack>
           <Image
             alt=""
             w={['72', '50vw']}
-            bg="green.500"
+            bg="#35515E"
             boxShadow="xl"
             borderRadius="12"
+            objectFit="cover"
             h={['56', '70vh']}
-            src="https://res.cloudinary.com/dupfwlkgb/image/upload/v1656405067/pexels-photo-4473622_a4ljw7.jpg"
+            src="https://res.cloudinary.com/dupfwlkgb/image/upload/v1656747510/pexels-alexander-mils-574664_j0bgzw.jpg"
           />
         </Center>
       </HStack>
       <Center py="10" display="flex" flexDirection="column" mt="5">
         <Text py="10" fontSize={['xl', '3xl']} color="#35515E">
-          مجموعه مقالات سلامت و تناسب اندام
+          مجموعه پروژهای در حال اجرا
         </Text>
         <Grid
           templateColumns={['repeat(1, 1fr)', 'repeat(3, 1fr)']}
@@ -96,13 +98,13 @@ const Home: NextPage = () => {
               key={item.id}
               boxShadow="xl"
             >
-              <Image alt="" w="96" h="72" src={item.img} />
+              <Image alt="" w="96" h="72" objectFit="cover" src={item.img} />
               <Box position="absolute">
-                <Box h="72" bg="rgba(53,81,94,0.4)">
+                <Box h="72" bg="rgba(216, 27, 96,0.3)">
                   <Center h="72">
                     <Text
                       px="5"
-                      fontSize="xl"
+                      fontSize="2xl"
                       w="96"
                       color="white"
                       textAlign="center"
@@ -135,7 +137,7 @@ const Home: NextPage = () => {
 export default Home;
 export const getStaticProps = async () => {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery('article', fetchProjects);
+  await queryClient.prefetchQuery('projects', fetchProjects);
   return {
     props: {
       dehydrateState: dehydrate(queryClient),

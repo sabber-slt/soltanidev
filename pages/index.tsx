@@ -15,6 +15,7 @@ import { fetchPublic } from '../utils/useFetch';
 import Article from '../components/base/Article';
 import Footer from '../components/Footer';
 import Loading from '../components/animation/Loading';
+import DrawerMenu from '../components/base/DrawerMenu';
 
 const Home: NextPage = () => {
   const { data, isLoading, error }: UseBaseQueryResult<Ibase[]> = useQuery<
@@ -27,6 +28,7 @@ const Home: NextPage = () => {
 
   return (
     <Box overflowX="hidden">
+      <DrawerMenu />
       <LandScreen src={item?.[0]} />
       <Intro src={item?.[1]?.info} />
 

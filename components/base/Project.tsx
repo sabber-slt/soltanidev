@@ -34,7 +34,7 @@ const Propject: React.FC<{ src: Ibase[] }> = ({ src }) => {
           color="rgb(53,81,94)"
           fontSize={['xl', 'xl']}
           pl="7"
-          onClick={() => router.push('/article')}
+          onClick={() => router.push('/projects')}
         >
           مشاهده همه
         </Button>
@@ -54,7 +54,7 @@ const Propject: React.FC<{ src: Ibase[] }> = ({ src }) => {
             mx="5"
             my="10"
           >
-            <Link href={`/article/${item.image}`}>
+            <Link href={`/projects/${item.image}`}>
               <a>
                 <Image
                   alt=""

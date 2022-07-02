@@ -5,8 +5,8 @@ import styled from '@emotion/styled';
 import '@fontsource/lalezar';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import Layout from '../components/Layout';
-import Head from 'next/head';
+
+// import Head from 'next/head';
 
 const AppContainer = styled.div`
   font-family: 'Lalezar', sans-serif;
@@ -23,26 +23,16 @@ const reactQueryClient = new QueryClient({
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <Head>
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
-        />
-      </Head>
-      <QueryClientProvider client={reactQueryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
-        <Hydrate state={pageProps.dehydrateState}>
-          <ChakraProvider>
-            <AppContainer>
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            </AppContainer>
-          </ChakraProvider>
-        </Hydrate>
-      </QueryClientProvider>
-    </>
+    <QueryClientProvider client={reactQueryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <Hydrate state={pageProps.dehydrateState}>
+        <ChakraProvider>
+          <AppContainer>
+            <Component {...pageProps} />
+          </AppContainer>
+        </ChakraProvider>
+      </Hydrate>
+    </QueryClientProvider>
   );
 }
 
