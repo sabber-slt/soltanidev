@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import '@fontsource/lalezar';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import Layout from '../components/Layout';
 
 // import Head from 'next/head';
 
@@ -28,7 +29,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Hydrate state={pageProps.dehydrateState}>
         <ChakraProvider>
           <AppContainer>
-            <Component {...pageProps} />
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
           </AppContainer>
         </ChakraProvider>
       </Hydrate>

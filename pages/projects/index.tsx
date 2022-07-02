@@ -20,7 +20,6 @@ import {
 import { useRouter } from 'next/router';
 import { ProjectProps } from '../../types/zodPublic';
 import { fetchProjects } from '../../utils/useFetch';
-import Footer from '../../components/Footer';
 import Loading from '../../components/animation/Loading';
 
 const Home: NextPage = () => {
@@ -100,10 +99,10 @@ const Home: NextPage = () => {
             >
               <Image alt="" w="96" h="72" objectFit="cover" src={item.img} />
               <Box position="absolute">
-                <Box h="72" bg="rgba(216, 27, 96,0.3)">
+                <Box h="72" bg="rgba(53,81,94,0.5)">
                   <Center h="72">
                     <Text
-                      px="5"
+                      px="10"
                       fontSize="2xl"
                       w="96"
                       color="white"
@@ -129,7 +128,6 @@ const Home: NextPage = () => {
           ))}
         </Grid>
       </Center>
-      <Footer />
     </Center>
   );
 };

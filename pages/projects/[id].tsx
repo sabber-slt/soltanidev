@@ -10,7 +10,7 @@ import {
 } from 'react-query';
 import { fetchProjectsById } from '../../utils/useFetch';
 import { ProjectProps } from '../../types/zodPublic';
-import Footer from '../../components/Footer';
+
 import Loading from '../../components/animation/Loading';
 
 const Home: NextPage = () => {
@@ -26,12 +26,7 @@ const Home: NextPage = () => {
   console.log(data);
   return (
     <Center display="flex " flexDirection="column">
-      <Box
-        display="flex"
-        flexDirection={['column', 'row']}
-        w="full"
-        bg="#35515E"
-      >
+      <Box display="flex" flexDirection={['column', 'row']} w="full">
         <Image alt="" src={data?.[0].img} w={['100vw', '60vw']} h="96" />
         <Center
           display="flex "
@@ -43,7 +38,7 @@ const Home: NextPage = () => {
             fontSize={['xl', '3xl']}
             textAlign="center"
             px="5"
-            color="white"
+            color="#D81B60"
           >
             {data?.[0].title}
           </Text>
@@ -66,25 +61,13 @@ const Home: NextPage = () => {
       >
         {data?.[0].content1}
       </Text>
-
-      {/* <Code
-          bg="gray.700"
-          color="white"
-          fontWeight="bold"
-          p="4"
-          borderRadius="lg"
-          style={{ direction: 'ltr' }}
-          whiteSpace="pre-line"
-        >
-          {data![0]?.code1}{' '}
-        </Code> */}
-
       <Image
         alt=""
         my="8"
         src={data?.[0].img1}
         w={['80', '50vw']}
-        h={['80', '70vh']}
+        h={['full', '70vh']}
+        boxShadow="2xl"
       />
 
       <Text
@@ -101,7 +84,8 @@ const Home: NextPage = () => {
         my="8"
         src={data?.[0]?.img2 || ''}
         w={['80', '50vw']}
-        h={['80', '70vh']}
+        h={['full', '70vh']}
+        boxShadow="2xl"
       />
       <Text
         whiteSpace="pre-line"
@@ -117,10 +101,9 @@ const Home: NextPage = () => {
         my="8"
         src={data?.[0]?.img3 || ''}
         w={['80', '50vw']}
-        h={['80', '70vh']}
+        h={['full', '70vh']}
+        boxShadow="2xl"
       />
-
-      <Footer />
     </Center>
   );
 };

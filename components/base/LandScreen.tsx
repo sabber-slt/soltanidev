@@ -33,9 +33,15 @@ const LandScreen: React.FC<{ src: Ibase }> = ({ src }) => {
         opacity={0.7}
         ratio={[1 / 4, 1, 1 / 2, 1 / 2]}
       >
-        <video autoPlay loop muted playsInline>
-          <source src="./video.mp4" />
-        </video>
+        <Image
+          alt=""
+          src="https://res.cloudinary.com/dupfwlkgb/image/upload/v1656775926/WhatsApp_Image_2022-07-02_at_8.00.56_PM_lme6v0.jpg"
+          w="full"
+          h="full"
+          filter={`brightness(1.2)`}
+          opacity={0.9}
+          objectFit="cover"
+        />
       </AspectRatio>
       <Center
         display="flex"

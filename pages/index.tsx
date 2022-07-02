@@ -13,7 +13,6 @@ import LandScreen from '../components/base/LandScreen';
 import { Ibase } from '../types/publicInterfaces';
 import { fetchPublic } from '../utils/useFetch';
 import Article from '../components/base/Article';
-import Footer from '../components/Footer';
 import Loading from '../components/animation/Loading';
 import DrawerMenu from '../components/base/DrawerMenu';
 
@@ -40,7 +39,6 @@ const Home: NextPage = () => {
       />
       <Article txt="مقالات عمومی" page="exercise" src={item?.slice(15, 19)} />
       <Comments src={item?.[6]?.info} />
-      <Footer />
     </Box>
   );
 };
