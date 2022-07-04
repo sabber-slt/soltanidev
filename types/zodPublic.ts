@@ -15,13 +15,28 @@ const Project = z.object({
   title: z.string(),
 });
 
-const Calorie = z.object({
-  cat: z.string().or(z.null()),
-  amount: z.string().or(z.null()),
+const Edu = z.object({
+  title: z.string(),
+  img: z.string(),
   id: z.number(),
-  food: z.string(),
-  calorie: z.string().or(z.null()),
+  des1: z.string(),
+  cod1: z.string(),
+  des2: z.string(),
+  cod2: z.string(),
+  des3: z.string(),
+  cod3: z.string(),
+  des4: z.string(),
+  cod4: z.string(),
+});
+
+const About = z.object({
+  title: z.string(),
+  img: z.string(),
+  img1: z.string(),
+  img2: z.string(),
+  content: z.string(),
 });
 
 export type ProjectProps = z.infer<typeof Project>;
-export type CalorieeProps = z.infer<typeof Calorie>;
+export type EduProps = z.infer<typeof Edu>;
+export type AboutProps = z.infer<typeof About>;

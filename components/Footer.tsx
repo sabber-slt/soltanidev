@@ -13,13 +13,13 @@ const Footer: React.FC = () => {
             color="white"
             py="16"
           >
-            <Link href="/">
+            <Link href="https://github.com/sabber-slt">
               <a>
                 <Image
                   alt=""
                   w={['14', '20']}
                   h={['14', '20']}
-                  src="https://res.cloudinary.com/dupfwlkgb/image/upload/v1656308312/2609558_instagram_social_media_social_icon_dsa3ai.png"
+                  src="https://res.cloudinary.com/dupfwlkgb/image/upload/v1652763913/github_ds1hmh.png"
                 />
               </a>
             </Link>
@@ -33,8 +33,8 @@ const Footer: React.FC = () => {
                 />
               </a>
             </Link>
-            <Link href="/">
-              <a>
+            <Link href="tel:00989122863901">
+              <a href="tel:00989122863901">
                 <Image
                   alt=""
                   w={['14', '20']}
@@ -55,15 +55,15 @@ const Footer: React.FC = () => {
             </Link>
           </Grid>
         </Center>
-        <Center h={['60vh']} w="60vw">
-          <Box h={['60vhh']} color="white" textAlign="center">
+        <Center h={['70vh']} w="60vw">
+          <Box h={['70vh']} color="white" textAlign="center">
             <Text py="5" fontSize="2xl" color="#D81B60">
               SoltaniDev
             </Text>
-            <Link href="/auth/register">
+            <Link href="/">
               <a>
                 <Text as="u" fontSize={['lg', '2xl']}>
-                  آووکادویی شو!
+                  برنامه نویسی یه سبک نوین
                 </Text>
               </a>
             </Link>
@@ -73,45 +73,41 @@ const Footer: React.FC = () => {
               color="white"
               py="16"
             >
-              <Link href="/article">
+              <Link href="/edu">
                 <a>
-                  <Text borderBottom="2px" fontSize={['lg', '2xl']}>
+                  <Text borderBottom="2px" fontSize={['sm', '2xl']}>
+                    آموزش های تخصصی
+                  </Text>
+                </a>
+              </Link>
+              <Link href="/articles">
+                <a>
+                  <Text borderBottom="2px" fontSize={['sm', '2xl']}>
                     مقالات
                   </Text>
                 </a>
               </Link>
-              <Link href="/exercise">
+              <Link href="/projects">
                 <a>
-                  <Text borderBottom="2px" fontSize={['lg', '2xl']}>
-                    ورزش
+                  <Text borderBottom="2px" fontSize={['sm', '2xl']}>
+                    پروژه ها
                   </Text>
                 </a>
               </Link>
-              <Link href="/food">
+              <Link href="/about">
                 <a>
-                  <Text borderBottom="2px" fontSize={['lg', '2xl']}>
-                    آشپزی سالم
-                  </Text>
-                </a>
-              </Link>
-              <Link href="/calorie">
-                <a>
-                  <Text borderBottom="2px" fontSize={['lg', '2xl']}>
-                    کالری ها
+                  <Text borderBottom="2px" fontSize={['sm', '2xl']}>
+                    درباره من
                   </Text>
                 </a>
               </Link>
             </Grid>
-            <Link href="/about">
-              <a>
-                <Text fontSize={['lg', '2xl']}> درباره تیم آووکادو</Text>
-              </a>
-            </Link>
+
             <Link href="/contact">
               <a>
                 <Text my="4" fontSize={['lg', '2xl']}>
                   {' '}
-                  تماس با ما
+                  تماس با من
                 </Text>
               </a>
             </Link>
@@ -127,7 +123,7 @@ const Footer: React.FC = () => {
         fontWeight="light"
         px="5"
       >
-        © تمامی حقوق این وب سایت متعلق به تیم سلامتی آووکادو میباشد می‌باشد.
+        09122863901© تمامی حقوق این وب سایت متعلق به صابر سلطانی میباشد می‌باشد.
       </Text>
       {/* <Text
         fontSize={['xs', 'sm']}

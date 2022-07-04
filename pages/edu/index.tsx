@@ -19,25 +19,25 @@ import {
 } from 'react-query';
 import { useRouter } from 'next/router';
 import { ProjectProps } from '../../types/zodPublic';
-import { fetchProjects } from '../../utils/useFetch';
+import { fetchEdu } from '../../utils/useFetch';
 import Loading from '../../components/animation/Loading';
 import Seo from '../../components/Seo';
 
 const Home: NextPage = () => {
   const router = useRouter();
   const { data, isLoading, error }: UseBaseQueryResult<ProjectProps[]> =
-    useQuery<ProjectProps[], Error>('projects', fetchProjects);
+    useQuery<ProjectProps[], Error>('edu', fetchEdu);
   if (isLoading) return <Loading />;
   if (error) return <Box>Error!</Box>;
   console.log(data);
   return (
     <Center display="flex" flexDirection="column">
       <Seo
-        title="پروژه های داخلی و خارجی انجام شده توسط مهندس صابر سلطانی"
-        desc="مهندس صابر سلطانی برنامه نویس ارشد جاوااسکریپت تا کنون با انجام بیش از 60 پروژه بین المللی توانسته جوایز بسیاری را نصیب خود کند "
+        title="برنامه نویسی نوین را با صابر سلطانی یاد بگیر"
+        desc="آموزش تخصصی اپلیکیشن های react js با صابر سلطانی"
         img1="https://res.cloudinary.com/dupfwlkgb/image/upload/v1656669395/soltanidev_s0vc6l.png"
         img2="https://res.cloudinary.com/dupfwlkgb/image/upload/v1656913721/pexels-christina-morillo-1181359_zado2e.jpg"
-        url="/projects"
+        url="/edu"
       />
       <HStack py="5" bg="#35515E" w="full">
         <Center w="full">
@@ -74,7 +74,7 @@ const Home: NextPage = () => {
               color="gray.50"
               textAlign="center"
             >
-              Projects
+              Education
             </Text>
           </VStack>
           <Image
@@ -85,13 +85,13 @@ const Home: NextPage = () => {
             borderRadius="12"
             objectFit="cover"
             h={['56', '70vh']}
-            src="https://res.cloudinary.com/dupfwlkgb/image/upload/v1656747510/pexels-alexander-mils-574664_j0bgzw.jpg"
+            src="https://res.cloudinary.com/dupfwlkgb/image/upload/v1656913721/pexels-christina-morillo-1181359_zado2e.jpg"
           />
         </Center>
       </HStack>
       <Center py="10" display="flex" flexDirection="column" mt="5">
         <Text as="h1" py="10" fontSize={['xl', '3xl']} color="#35515E">
-          مجموعه پروژهای در حال اجرا
+          آموزش های تخصصی برنامه نویسان Node Js
         </Text>
         <Grid
           templateColumns={['repeat(1, 1fr)', 'repeat(3, 1fr)']}
@@ -132,7 +132,7 @@ const Home: NextPage = () => {
                       colorScheme="white"
                       variant="outline"
                       my="5"
-                      onClick={() => router.push(`/projects/${item.id}`)}
+                      onClick={() => router.push(`/edu/${item.id}`)}
                       color="white"
                     >
                       مشاهده مقاله
@@ -151,7 +151,7 @@ const Home: NextPage = () => {
 export default Home;
 export const getStaticProps = async () => {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery('projects', fetchProjects);
+  await queryClient.prefetchQuery('edu', fetchEdu);
   return {
     props: {
       dehydrateState: dehydrate(queryClient),

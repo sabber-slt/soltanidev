@@ -79,35 +79,26 @@ const DrawerMenu: React.FC = () => {
                 پروژه های برتر
               </Button>
               <Button
-                onClick={() => router.push('/projects')}
+                onClick={() => router.push('/articles')}
                 w="40"
                 h="14"
                 mt="5"
                 colorScheme="white"
                 border="2px"
               >
-                آشپزی سالم
+                مقالات تخصصی
               </Button>
               <Button
-                onClick={() => router.push('/calorie')}
+                onClick={() => router.push('/edu')}
                 w="40"
                 h="14"
                 mt="5"
                 colorScheme="white"
                 border="2px"
               >
-                جدول کالری ها
+                آموزش های تخصصی
               </Button>
-              <Button
-                onClick={() => router.push('/exercise')}
-                w="40"
-                h="14"
-                mt="5"
-                colorScheme="white"
-                border="2px"
-              >
-                ورزش
-              </Button>
+
               <Button
                 onClick={() => router.push('/about')}
                 w="40"
@@ -116,7 +107,7 @@ const DrawerMenu: React.FC = () => {
                 colorScheme="white"
                 border="2px"
               >
-                درباره ما
+                درباره من
               </Button>
               <Button
                 onClick={() => router.push('/contact')}
@@ -126,7 +117,7 @@ const DrawerMenu: React.FC = () => {
                 colorScheme="white"
                 border="2px"
               >
-                تماس با ما
+                تماس با من
               </Button>
             </Center>
           </DrawerBody>

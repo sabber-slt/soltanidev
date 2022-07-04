@@ -60,7 +60,7 @@ const Comments: React.FC<{ src: Iinfo[] }> = ({ src }) => {
                   color={'white'}
                   textAlign="center"
                   fontSize="xl"
-                  my="4"
+                  my="2"
                   zIndex={100}
                   px="7"
                 >
@@ -75,7 +75,7 @@ const Comments: React.FC<{ src: Iinfo[] }> = ({ src }) => {
                   textAlign="center"
                   fontSize="sm"
                   zIndex={100}
-                  px="7"
+                  px="4"
                 >
                   {item.content}
                 </Text>

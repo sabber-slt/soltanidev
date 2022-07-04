@@ -45,7 +45,7 @@ const Article: React.FC<{ src: Ibase[]; page: string; txt: string }> = ({
         <Button
           rightIcon={<ArrowBackIcon boxSize="7" />}
           bg="white"
-          color="green.800"
+          color="#35515E"
           fontSize={['lg', 'xl']}
           onClick={() => router.push(`/${page}`)}
         >

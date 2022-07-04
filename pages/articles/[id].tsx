@@ -8,7 +8,7 @@ import {
   UseBaseQueryResult,
   useQuery,
 } from 'react-query';
-import { fetchProjectsById } from '../../utils/useFetch';
+import { fetchArticlesById } from '../../utils/useFetch';
 import { ProjectProps } from '../../types/zodPublic';
 
 import Loading from '../../components/animation/Loading';
@@ -19,8 +19,8 @@ const Home: NextPage = () => {
   const id = router.query.id;
 
   const { data, isLoading, error }: UseBaseQueryResult<ProjectProps[]> =
-    useQuery<ProjectProps[], Error>(['project', id], () =>
-      fetchProjectsById(`${id}`)
+    useQuery<ProjectProps[], Error>(['article', id], () =>
+      fetchArticlesById(`${id}`)
     );
   if (isLoading) return <Loading />;
   if (error) return <Box>Error!</Box>;
@@ -32,10 +32,10 @@ const Home: NextPage = () => {
         desc={`${data?.[0].content1}`}
         img1={`${data?.[0].img}`}
         img2={`${data?.[0].img1}`}
-        url={`/projects/${data?.[0].id}`}
+        url={`/articles/${data?.[0].id}`}
       />
       <Box display="flex" flexDirection={['column', 'row']} w="full">
-        <Image alt="" src={data?.[0].img} w={['100vw', '60vw']} h="96" />
+        <Image alt="" src={data?.[0].img1} w={['100vw', '60vw']} h="96" />
         <Center
           display="flex "
           flexDirection="column"
@@ -72,7 +72,7 @@ const Home: NextPage = () => {
       <Image
         alt=""
         my="8"
-        src={data?.[0].img1}
+        src={data?.[0].img2}
         w={['80', '50vw']}
         h={['full', '70vh']}
         boxShadow="2xl"
@@ -87,31 +87,27 @@ const Home: NextPage = () => {
       >
         {data?.[0].content2}
       </Text>
-      <Image
-        alt=""
-        my="8"
-        src={data?.[0]?.img2 || ''}
-        w={['80', '50vw']}
-        h={['full', '70vh']}
-        boxShadow="2xl"
-      />
-      <Text
-        whiteSpace="pre-line"
-        fontSize={['lg', '2xl']}
-        color="#35515E"
-        px={['3', '8']}
-        py="10"
-      >
-        {data?.[0]?.content3 || ''}
-      </Text>
-      <Image
-        alt=""
-        my="8"
-        src={data?.[0]?.img3 || ''}
-        w={['80', '50vw']}
-        h={['full', '70vh']}
-        boxShadow="2xl"
-      />
+      {data?.[0]?.img3 !== null && (
+        <Image
+          alt=""
+          my="8"
+          src={data?.[0]?.img3}
+          w={['80', '50vw']}
+          h={['full', '70vh']}
+          boxShadow="2xl"
+        />
+      )}
+      {data?.[0]?.content3 !== null && (
+        <Text
+          whiteSpace="pre-line"
+          fontSize={['lg', '2xl']}
+          color="#35515E"
+          px={['3', '8']}
+          py="10"
+        >
+          {data?.[0]?.content3 || ''}
+        </Text>
+      )}
     </Center>
   );
 };
@@ -127,8 +123,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const route = params?.id;
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(['project', route], () =>
-    fetchProjectsById(`${route}`)
+  await queryClient.prefetchQuery(['article', route], () =>
+    fetchArticlesById(`${route}`)
   );
   return {
     props: {

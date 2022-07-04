@@ -88,7 +88,7 @@ export const fetchProjectsById = async (id: string) => {
   return data?.data?.project;
 };
 
-export const fetchFoods = async () => {
+export const fetchArticles = async () => {
   const res = await fetch(API, {
     method: 'POST',
     headers: {
@@ -97,24 +97,20 @@ export const fetchFoods = async () => {
     },
     body: JSON.stringify({
       query: `query MyQuery {
-        cook {
-          cat
-          content
-          content2
-          id
-          img1
-          img2
+        articles {
           title
+          id
+          img1          
         }
       }
       `,
     }),
   });
   const data = await res.json();
-  return data?.data?.cook;
+  return data?.data?.articles;
 };
 
-export const fetchFoodById = async (id: string) => {
+export const fetchArticlesById = async (id: string) => {
   const res = await fetch(API, {
     method: 'POST',
     headers: {
@@ -123,14 +119,15 @@ export const fetchFoodById = async (id: string) => {
     },
     body: JSON.stringify({
       query: `query MyQuery($id:String){
-        cook(where: {id: {_cast: {String: {_eq: $id}}}}) {
-          cat
-          content
-          content2
-          id
-          img1
-          img2
+        articles(where: {id: {_cast: {String: {_eq: $id}}}}) {
           title
+          id
+          img1 
+          img2
+          img3
+          content1
+          content2
+          content3
         }
       }
       `,
@@ -140,10 +137,10 @@ export const fetchFoodById = async (id: string) => {
     }),
   });
   const data = await res.json();
-  return data?.data?.cook;
+  return data?.data?.articles;
 };
 
-export const fetchCalories = async () => {
+export const fetchEdu = async () => {
   const res = await fetch(API, {
     method: 'POST',
     headers: {
@@ -152,11 +149,9 @@ export const fetchCalories = async () => {
     },
     body: JSON.stringify({
       query: `query MyQuery {
-        calorie(distinct_on: id) {
-          amount
-          calorie
-          cat
-          food
+        edu(distinct_on: id) {
+          title,
+          img,
           id
         }
       }
@@ -164,36 +159,9 @@ export const fetchCalories = async () => {
     }),
   });
   const data = await res.json();
-  return data?.data?.calorie;
+  return data?.data?.edu;
 };
-
-export const fetchExersice = async () => {
-  const res = await fetch(API, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Hasura-Role': 'public',
-    },
-    body: JSON.stringify({
-      query: `query MyQuery {
-        varzesh {
-          cat
-          content
-          content2
-          id
-          img1
-          img2
-          title
-        }
-      }
-      `,
-    }),
-  });
-  const data = await res.json();
-  return data?.data?.varzesh;
-};
-
-export const fetchExerciseById = async (id: string) => {
+export const fetchEduById = async (id: string) => {
   const res = await fetch(API, {
     method: 'POST',
     headers: {
@@ -202,14 +170,18 @@ export const fetchExerciseById = async (id: string) => {
     },
     body: JSON.stringify({
       query: `query MyQuery($id:String) {
-        varzesh(where: {id: {_cast: {String: {_eq: $id}}}}) {
-          cat
-          content
-          content2
-          id
-          img1
-          img2
-          title
+        edu(where: {id: {_cast: {String: {_eq: $id}}}}) {
+          title,
+          img,
+          id,
+          des1,
+          cod1,
+          des2,
+          cod2,
+          des3,
+          cod3,
+          des4,
+          cod4
         }
       }
       `,
@@ -219,5 +191,30 @@ export const fetchExerciseById = async (id: string) => {
     }),
   });
   const data = await res.json();
-  return data?.data?.varzesh;
+  return data?.data?.edu;
+};
+
+export const fetchAbout = async () => {
+  const res = await fetch(API, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Hasura-Role': 'public',
+    },
+    body: JSON.stringify({
+      query: `query MyQuery($id:String) {
+        about {
+          title
+          content
+          img
+          img1
+          img2
+        
+        }
+      }
+      `,
+    }),
+  });
+  const data = await res.json();
+  return data?.data?.about;
 };

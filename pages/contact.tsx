@@ -74,15 +74,15 @@ const Contact: NextPage = () => {
         position="absolute"
         top="0"
         zIndex="-1"
-        src="https://images.pexels.com/photos/9241897/pexels-photo-9241897.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        src="https://res.cloudinary.com/dupfwlkgb/image/upload/v1653764272/pexels-cottonbro-6686455_zglpnz.jpg"
       />
       <Center h="100vh">
         <Center
           w="96"
           display="flex"
           flexDirection="column"
-          h="60vh"
-          bgGradient="linear(to-t, rgba(34,84,61),rgba(34,84,61,0.7), rgba(34,84,61,0.4))"
+          h="70vh"
+          bgGradient="linear(to-t, rgb(53,81,94),rgba(53,81,94,0.7), rgba(53,81,94,0.4))"
           borderRadius="lg"
         >
           <Text color="white">{err}</Text>
@@ -138,6 +138,9 @@ const Contact: NextPage = () => {
                 </VStack>
               </Center>
             </FormControl>
+            <Text textAlign="center" color="white" py="3">
+              شماره تماس : 09122863901
+            </Text>
           </form>
         </Center>
       </Center>

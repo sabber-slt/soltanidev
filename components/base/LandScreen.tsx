@@ -28,7 +28,7 @@ const LandScreen: React.FC<{ src: Ibase }> = ({ src }) => {
         position="absolute"
         w="100vw"
         // objectFit="cover"
-        maxH={['90vh', '100vh']}
+        maxH={['90vh', '90vh']}
         zIndex={0}
         opacity={0.7}
         ratio={[1 / 4, 1, 1 / 2, 1 / 2]}
@@ -46,7 +46,7 @@ const LandScreen: React.FC<{ src: Ibase }> = ({ src }) => {
       <Center
         display="flex"
         flexDirection="column"
-        h="2xl"
+        h="90vh"
         zIndex={100}
         color="white"
       >
@@ -83,13 +83,13 @@ const LandScreen: React.FC<{ src: Ibase }> = ({ src }) => {
           textAlign="center"
           fontSize={['xl', '3xl']}
           w={['full', '50vw']}
-          my="4"
+          mt="2"
           zIndex={100}
           px="16"
         >
-          {src.content}zxczxczxczxczxczxc
+          {src.content}
         </Text>
-        <Box as={motion.div} pt="5" animation={animation} zIndex={100}>
+        <Box as={motion.div} pt="7" animation={animation} zIndex={100}>
           <ArrowDownIcon color="#D81B60" boxSize="12" />
         </Box>
       </Center>
