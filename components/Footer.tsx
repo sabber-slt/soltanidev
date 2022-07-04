@@ -23,13 +23,13 @@ const Footer: React.FC = () => {
                 />
               </a>
             </Link>
-            <Link href="/">
+            <Link href="https://instagram.com/sabber.slt">
               <a>
                 <Image
                   alt=""
                   w={['14', '20']}
                   h={['14', '20']}
-                  src="https://res.cloudinary.com/dupfwlkgb/image/upload/v1656308311/4202002_apps_google_googleplay_play_logo_icon_x3jix4.png"
+                  src="https://res.cloudinary.com/dupfwlkgb/image/upload/v1656308312/2609558_instagram_social_media_social_icon_dsa3ai.png"
                 />
               </a>
             </Link>
@@ -43,13 +43,13 @@ const Footer: React.FC = () => {
                 />
               </a>
             </Link>
-            <Link href="/">
+            <Link href="https://www.linkedin.com/in/sabber-soltani-a71397236">
               <a>
                 <Image
                   alt=""
                   w={['14', '20']}
                   h={['14', '20']}
-                  src="https://res.cloudinary.com/dupfwlkgb/image/upload/v1656308311/2243991_instagram_login_mobile_phone_communication_icon_eec5yf.png"
+                  src="https://res.cloudinary.com/dupfwlkgb/image/upload/v1652763913/in_vqyfhw.png"
                 />
               </a>
             </Link>
@@ -76,7 +76,7 @@ const Footer: React.FC = () => {
               <Link href="/edu">
                 <a>
                   <Text borderBottom="2px" fontSize={['sm', '2xl']}>
-                    آموزش های تخصصی
+                    آموزش ها
                   </Text>
                 </a>
               </Link>
