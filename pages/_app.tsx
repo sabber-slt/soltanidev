@@ -7,6 +7,9 @@ import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import Layout from '../components/Layout';
 import Script from 'next/script';
+import * as gtag from '../utils/gtag';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 // import Head from 'next/head';
 
@@ -23,30 +26,37 @@ const reactQueryClient = new QueryClient({
   },
 });
 
-// <!-- Global site tag (gtag.js) - Google Analytics -->
-// <script async src="https://www.googletagmanager.com/gtag/js?id=G-S16NS1060N"></script>
-// <script>
-//   window.dataLayer = window.dataLayer || [];
-//   function gtag(){dataLayer.push(arguments);}
-//   gtag('js', new Date());
-
-//   gtag('config', 'G-S16NS1060N');
-// </script>
-
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  useEffect(() => {
+    const handleRouteChange = (url: URL) => {
+      gtag.pageview(url);
+    };
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
   return (
     <>
       <Script
         strategy="afterInteractive"
-        src={'https://www.googletagmanager.com/gtag/js?id=G-S16NS1060N'}
+        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
       />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`window.dataLayer = window.dataLayer || [];
-             function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-
-              gtag('config', 'G-S16NS1060N');`}
-      </Script>
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${gtag.GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
       <QueryClientProvider client={reactQueryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         <Hydrate state={pageProps.dehydrateState}>
