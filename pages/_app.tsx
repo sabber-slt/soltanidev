@@ -6,6 +6,7 @@ import '@fontsource/lalezar';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import Layout from '../components/Layout';
+import Script from 'next/script';
 
 // import Head from 'next/head';
 
@@ -22,20 +23,43 @@ const reactQueryClient = new QueryClient({
   },
 });
 
+// <!-- Global site tag (gtag.js) - Google Analytics -->
+// <script async src="https://www.googletagmanager.com/gtag/js?id=G-S16NS1060N"></script>
+// <script>
+//   window.dataLayer = window.dataLayer || [];
+//   function gtag(){dataLayer.push(arguments);}
+//   gtag('js', new Date());
+
+//   gtag('config', 'G-S16NS1060N');
+// </script>
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <QueryClientProvider client={reactQueryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <Hydrate state={pageProps.dehydrateState}>
-        <ChakraProvider>
-          <AppContainer>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </AppContainer>
-        </ChakraProvider>
-      </Hydrate>
-    </QueryClientProvider>
+    <>
+      <Script
+        strategy="lazyOnload"
+        src={'https://www.googletagmanager.com/gtag/js?id=G-S16NS1060N'}
+      />
+      <Script id="google-analytics" strategy="lazyOnload">
+        {`window.dataLayer = window.dataLayer || [];
+             function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-S16NS1060N');`}
+      </Script>
+      <QueryClientProvider client={reactQueryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <Hydrate state={pageProps.dehydrateState}>
+          <ChakraProvider>
+            <AppContainer>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </AppContainer>
+          </ChakraProvider>
+        </Hydrate>
+      </QueryClientProvider>
+    </>
   );
 }
 
