@@ -20,7 +20,7 @@ const Home: NextPage = () => {
   >('edu', fetchAbout);
   if (isLoading) return <Loading />;
   if (error) return <Box>Error!</Box>;
-  console.log(data);
+
   return (
     <Box color="#35515E">
       <Seo
@@ -31,24 +31,37 @@ const Home: NextPage = () => {
         url="/about"
       />
       <Box p="7">
-        <Center py="10" display="flex" flexDirection="column">
+        <Box display="flex" flexDirection={['column', 'row']} w="full">
           <Image
-            borderRadius={['0', '20']}
-            boxShadow="xl"
-            alt="درباره صابر سلطانی بیشتر بدانید"
-            w={['full', '50vw']}
-            h={['96', '70vh']}
+            alt=""
             src={data?.[0].img}
-          />
-          <Image
-            alt="صابر سلطانی"
-            w={['36', '50vw']}
-            h={['40', '70vh']}
-            src="https://res.cloudinary.com/dupfwlkgb/image/upload/v1648663004/3_txhflv.png"
-          />
-        </Center>
-        <Text fontSize={['xl', '2xl']}>{data?.[0].title} </Text>
-        <Text py="5" whiteSpace="pre-line" fontSize={['lg', '2xl']}>
+            w={['100vw', '80vw']}
+            h={['96', '70vh']}
+          />{' '}
+          <Center
+            display="flex "
+            flexDirection="column"
+            h={['28', '70vh']}
+            w="full"
+            bg={['#D81B60', '#D81B60']}
+          >
+            <Image
+              alt="صابر سلطانی"
+              w={['36', '40']}
+              h={['40', '56']}
+              src="https://res.cloudinary.com/dupfwlkgb/image/upload/v1648663004/3_txhflv.png"
+            />
+            <Text
+              fontSize={['xl', '3xl']}
+              textAlign="center"
+              px="5"
+              color={['#D81B60', 'white']}
+            >
+              {data?.[0].title}
+            </Text>
+          </Center>
+        </Box>
+        <Text my={['8']} py="5" whiteSpace="pre-line" fontSize={['lg', '2xl']}>
           {data?.[0].content}
         </Text>
       </Box>

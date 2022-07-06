@@ -55,8 +55,8 @@ const Footer: React.FC = () => {
             </Link>
           </Grid>
         </Center>
-        <Center h={['70vh']} w="60vw">
-          <Box h={['70vh']} color="white" textAlign="center">
+        <Center h={['60vh']} w="60vw">
+          <Box color="white" textAlign="center">
             <Text py="5" fontSize="2xl" color="#D81B60">
               SoltaniDev
             </Text>

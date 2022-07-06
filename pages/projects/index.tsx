@@ -29,7 +29,7 @@ const Home: NextPage = () => {
     useQuery<ProjectProps[], Error>('projects', fetchProjects);
   if (isLoading) return <Loading />;
   if (error) return <Box>Error!</Box>;
-  console.log(data);
+
   return (
     <Center display="flex" flexDirection="column">
       <Seo

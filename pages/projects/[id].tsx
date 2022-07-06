@@ -24,7 +24,7 @@ const Home: NextPage = () => {
     );
   if (isLoading) return <Loading />;
   if (error) return <Box>Error!</Box>;
-  console.log(data);
+
   return (
     <Center display="flex " flexDirection="column">
       <Seo
@@ -35,18 +35,24 @@ const Home: NextPage = () => {
         url={`/projects/${data?.[0].id}`}
       />
       <Box display="flex" flexDirection={['column', 'row']} w="full">
-        <Image alt="" src={data?.[0].img} w={['100vw', '60vw']} h="96" />
+        <Image
+          alt=""
+          src={data?.[0].img}
+          w={['100vw', '80vw']}
+          h={['96', '70vh']}
+        />
         <Center
           display="flex "
           flexDirection="column"
-          h={['28', '96']}
+          h={['28', '70vh']}
           w="full"
+          bg={['white', '#D81B60']}
         >
           <Text
             fontSize={['xl', '3xl']}
             textAlign="center"
             px="5"
-            color="#D81B60"
+            color={['#D81B60', 'white']}
           >
             {data?.[0].title}
           </Text>
@@ -69,14 +75,15 @@ const Home: NextPage = () => {
       >
         {data?.[0].content1}
       </Text>
-      <Image
-        alt=""
-        my="8"
-        src={data?.[0].img1}
-        w={['80', '50vw']}
-        h={['full', '70vh']}
-        boxShadow="2xl"
-      />
+      <Box bg="#D81B60" px="20">
+        <Image
+          alt=""
+          my="8"
+          src={data?.[0].img1}
+          w={['80', '64']}
+          h={['full', '70vh']}
+        />
+      </Box>
 
       <Text
         whiteSpace="pre-line"
@@ -87,31 +94,33 @@ const Home: NextPage = () => {
       >
         {data?.[0].content2}
       </Text>
-      <Image
-        alt=""
-        my="8"
-        src={data?.[0]?.img2 || ''}
-        w={['80', '50vw']}
-        h={['full', '70vh']}
-        boxShadow="2xl"
-      />
+      <Box bg="#D81B60" px="20">
+        <Image
+          alt=""
+          my="8"
+          src={data?.[0].img2}
+          w={['80', '64']}
+          h={['full', '70vh']}
+        />
+      </Box>
       <Text
         whiteSpace="pre-line"
         fontSize={['lg', '2xl']}
         color="#35515E"
         px={['3', '8']}
-        py="10"
+        py="2"
       >
         {data?.[0]?.content3 || ''}
       </Text>
-      <Image
-        alt=""
-        my="8"
-        src={data?.[0]?.img3 || ''}
-        w={['80', '50vw']}
-        h={['full', '70vh']}
-        boxShadow="2xl"
-      />
+      <Box bg="#D81B60" px="20" my="5">
+        <Image
+          alt=""
+          my="8"
+          src={data?.[0].img3}
+          w={['80', '64']}
+          h={['full', '70vh']}
+        />
+      </Box>
     </Center>
   );
 };

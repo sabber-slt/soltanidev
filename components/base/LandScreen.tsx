@@ -28,7 +28,7 @@ const LandScreen: React.FC<{ src: Ibase }> = ({ src }) => {
         position="absolute"
         w="100vw"
         // objectFit="cover"
-        maxH={['90vh', '90vh']}
+        maxH={['90vh', '100vh']}
         zIndex={0}
         opacity={0.7}
         ratio={[1 / 4, 1, 1 / 2, 1 / 2]}

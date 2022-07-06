@@ -29,7 +29,7 @@ const Home: NextPage = () => {
     useQuery<ProjectProps[], Error>('edu', fetchEdu);
   if (isLoading) return <Loading />;
   if (error) return <Box>Error!</Box>;
-  console.log(data);
+
   return (
     <Center display="flex" flexDirection="column">
       <Seo
@@ -50,7 +50,7 @@ const Home: NextPage = () => {
           >
             <Image
               mr="5"
-              alt=""
+              alt="soltaniDev"
               w={['16', '32']}
               ml={['0', '40']}
               h={['16', '40']}
@@ -78,7 +78,7 @@ const Home: NextPage = () => {
             </Text>
           </VStack>
           <Image
-            alt=""
+            alt="soltaniDev Projects"
             w={['72', '50vw']}
             bg="#35515E"
             boxShadow="xl"
@@ -107,7 +107,7 @@ const Home: NextPage = () => {
               boxShadow="xl"
             >
               <Image
-                alt=""
+                alt={item.title}
                 w="80"
                 h="72"
                 objectFit="cover"

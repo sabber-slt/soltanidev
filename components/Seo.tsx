@@ -40,6 +40,15 @@ const Seo: React.FC<Props> = ({ title, desc, url, img1, img2 }) => {
           ],
           site_name: 'صابر سلطانی | SoltaniDev',
         }}
+        robotsProps={{
+          nosnippet: true,
+          notranslate: true,
+          noimageindex: true,
+          noarchive: true,
+          maxSnippet: -1,
+          maxImagePreview: 'none',
+          maxVideoPreview: -1,
+        }}
       />
     </>
   );

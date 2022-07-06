@@ -24,7 +24,7 @@ const Home: NextPage = () => {
   >(['eduById', id], () => fetchEduById(`${id}`));
   if (isLoading) return <Loading />;
   if (error) return <Box>Error!</Box>;
-  console.log(data?.[0].cod1);
+
   return (
     <Center display="flex " flexDirection="column">
       <Seo
@@ -35,19 +35,24 @@ const Home: NextPage = () => {
         url={`/edu/${data?.[0].id}`}
       />
       <Box display="flex" flexDirection={['column', 'row']} w="full">
-        <Image alt="" src={data?.[0].img} w={['100vw', '60vw']} h="96" />
+        <Image
+          alt=""
+          src={data?.[0].img}
+          w={['100vw', '80vw']}
+          h={['96', '70vh']}
+        />{' '}
         <Center
           display="flex "
           flexDirection="column"
-          h={['28', '96']}
+          h={['28', '70vh']}
           w="full"
+          bg={['white', '#D81B60']}
         >
           <Text
-            as="h1"
             fontSize={['xl', '3xl']}
             textAlign="center"
             px="5"
-            color="#D81B60"
+            color={['#D81B60', 'white']}
           >
             {data?.[0].title}
           </Text>
@@ -55,7 +60,7 @@ const Home: NextPage = () => {
             fontSize={['md', '2xl']}
             textAlign="center"
             px="5"
-            color="white"
+            color="#D81B60"
           >
             SoltaniDev
           </Text>
@@ -75,13 +80,15 @@ const Home: NextPage = () => {
         <Code
           fontWeight="bold"
           py="5"
+          my={['3', '10']}
           px="2"
+          w={['full', '80vw']}
+          overflowX="visible"
           whiteSpace="pre-wrap"
-          fontSize="xs"
+          fontSize={['xs', 'xl']}
           style={{ direction: 'ltr' }}
           bg="gray.800"
           color="white"
-          my="3"
         >
           {data?.[0].cod1}
         </Code>
@@ -100,13 +107,15 @@ const Home: NextPage = () => {
         <Code
           fontWeight="bold"
           py="5"
+          my={['3', '10']}
           px="2"
+          w={['full', '80vw']}
+          overflowX="visible"
           whiteSpace="pre-wrap"
-          fontSize="xs"
+          fontSize={['xs', 'xl']}
           style={{ direction: 'ltr' }}
           bg="gray.800"
           color="white"
-          my="3"
         >
           {data?.[0].cod2}
         </Code>
@@ -125,13 +134,15 @@ const Home: NextPage = () => {
         <Code
           fontWeight="bold"
           py="5"
+          my={['3', '10']}
           px="2"
+          w={['full', '80vw']}
           whiteSpace="pre-wrap"
-          fontSize="xs"
+          fontSize={['xs', 'xl']}
+          overflowX="visible"
           style={{ direction: 'ltr' }}
           bg="gray.800"
           color="white"
-          my="3"
         >
           {data?.[0].cod3}
         </Code>
@@ -153,13 +164,15 @@ const Home: NextPage = () => {
         <Code
           fontWeight="bold"
           py="5"
+          my={['3', '10']}
           px="2"
+          w={['full', '80vw']}
           whiteSpace="pre-wrap"
-          fontSize="xs"
+          overflowX="auto"
+          fontSize={['xs', 'xl']}
           style={{ direction: 'ltr' }}
           bg="gray.800"
           color="white"
-          my="5"
         >
           {data?.[0].cod4}
         </Code>
