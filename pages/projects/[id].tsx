@@ -53,6 +53,7 @@ const Home: NextPage = () => {
             textAlign="center"
             px="5"
             color={['#D81B60', 'white']}
+            as="h1"
           >
             {data?.[0].title}
           </Text>
@@ -75,7 +76,7 @@ const Home: NextPage = () => {
       >
         {data?.[0].content1}
       </Text>
-      <Box bg="#D81B60" px="20">
+      <Box my="8" bg="#D81B60" px="20">
         <Image
           alt=""
           my="8"
@@ -90,7 +91,7 @@ const Home: NextPage = () => {
         fontSize={['lg', '2xl']}
         color="#35515E"
         px={['3', '8']}
-        py="10"
+        pb="10"
       >
         {data?.[0].content2}
       </Text>
@@ -108,7 +109,7 @@ const Home: NextPage = () => {
         fontSize={['lg', '2xl']}
         color="#35515E"
         px={['3', '8']}
-        py="2"
+        py="8"
       >
         {data?.[0]?.content3 || ''}
       </Text>

@@ -53,6 +53,7 @@ const Home: NextPage = () => {
             textAlign="center"
             px="5"
             color={['#D81B60', 'white']}
+            as="h1"
           >
             {data?.[0].title}
           </Text>
