@@ -18,7 +18,7 @@ const Loading = () => {
           textAlign="center"
           fontSize={['xl', '3xl']}
         >
-          Avocado
+          soltanidev.com
         </Text>
       </Center>
     </Box>

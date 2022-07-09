@@ -54,7 +54,7 @@ export const fetchProjects = async () => {
   const data = await res.json();
   return data?.data?.project;
 };
-export const fetchProjectsById = async (id: string) => {
+export const fetchProjectsById = async (id: number) => {
   const res = await fetch(API, {
     method: 'POST',
     headers: {
@@ -62,8 +62,8 @@ export const fetchProjectsById = async (id: string) => {
       'X-Hasura-Role': 'public',
     },
     body: JSON.stringify({
-      query: `query MyQuery($id:String) {
-        project(where: {id: {_cast: {String: {_eq: $id}}}}) {
+      query: `query MyQuery($id:Int) {
+        project(where: {id: {_eq: $id}})  {
           code1
           code2
           content1
@@ -110,7 +110,7 @@ export const fetchArticles = async () => {
   return data?.data?.articles;
 };
 
-export const fetchArticlesById = async (id: string) => {
+export const fetchArticlesById = async (id: number) => {
   const res = await fetch(API, {
     method: 'POST',
     headers: {
@@ -118,8 +118,8 @@ export const fetchArticlesById = async (id: string) => {
       'X-Hasura-Role': 'public',
     },
     body: JSON.stringify({
-      query: `query MyQuery($id:String){
-        articles(where: {id: {_cast: {String: {_eq: $id}}}}) {
+      query: `query MyQuery($id:Int){
+        articles(where: {id: {_eq: $id}})  {
           title
           id
           img1 
@@ -161,7 +161,7 @@ export const fetchEdu = async () => {
   const data = await res.json();
   return data?.data?.edu;
 };
-export const fetchEduById = async (id: string) => {
+export const fetchEduById = async (id: number) => {
   const res = await fetch(API, {
     method: 'POST',
     headers: {
@@ -169,18 +169,18 @@ export const fetchEduById = async (id: string) => {
       'X-Hasura-Role': 'public',
     },
     body: JSON.stringify({
-      query: `query MyQuery($id:String) {
-        edu(where: {id: {_cast: {String: {_eq: $id}}}}) {
-          title,
-          img,
-          id,
-          des1,
-          cod1,
-          des2,
-          cod2,
-          des3,
-          cod3,
-          des4,
+      query: `query MyQuery($id: Int) {
+        edu(where: {id: {_eq: $id}}) {
+          title
+          img
+          id
+          des1
+          cod1
+          des2
+          cod2
+          des3
+          cod3
+          des4
           cod4
         }
       }

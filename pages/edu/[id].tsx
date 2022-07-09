@@ -21,7 +21,17 @@ const Home: NextPage = () => {
   const { data, isLoading, error }: UseBaseQueryResult<EduProps[]> = useQuery<
     EduProps[],
     Error
-  >(['eduById', id], () => fetchEduById(`${id}`));
+  >(['eduById', id], () => fetchEduById(parseInt(id as string)), {
+    refetchOnWindowFocus: false,
+  });
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <Text>error</Text>;
+  }
   if (isLoading) return <Loading />;
   if (error) return <Box>Error!</Box>;
 
@@ -191,10 +201,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const route = params?.id;
+  const route = parseInt(params?.id as string);
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery(['eduById', route], () =>
-    fetchEduById(`${route}`)
+    fetchEduById(route)
   );
   return {
     props: {

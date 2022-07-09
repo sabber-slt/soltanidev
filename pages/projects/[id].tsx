@@ -20,7 +20,7 @@ const Home: NextPage = () => {
 
   const { data, isLoading, error }: UseBaseQueryResult<ProjectProps[]> =
     useQuery<ProjectProps[], Error>(['project', id], () =>
-      fetchProjectsById(`${id}`)
+      fetchProjectsById(parseInt(id as string))
     );
   if (isLoading) return <Loading />;
   if (error) return <Box>Error!</Box>;
@@ -135,10 +135,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const route = params?.id;
+  const route = parseInt(params?.id as string);
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery(['project', route], () =>
-    fetchProjectsById(`${route}`)
+    fetchProjectsById(route)
   );
   return {
     props: {
