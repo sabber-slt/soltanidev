@@ -1,4 +1,5 @@
-export const API = 'https://soltanidev.hasura.app/v1/graphql';
+export const API = `${process.env.DATABASE_URL}`;
+
 export const HEADERS = {
   'Content-Type': 'application/json',
   'X-Hasura-Role': 'public',
