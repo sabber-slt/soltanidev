@@ -1,7 +1,6 @@
 This is a [SoltaniDev](https://soltanidev.com/) portfolio bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ![Screenshot](screenshot.png)
-![Screenshot](screenshot2.png)
 
 ## Features
 
