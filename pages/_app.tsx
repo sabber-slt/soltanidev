@@ -11,6 +11,7 @@ import * as gtag from '../utils/gtag';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { NextSeo } from 'next-seo';
+import Head from 'next/head';
 
 // import Head from 'next/head';
 
@@ -34,6 +35,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router.events]);
   return (
     <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <NextSeo
         title="صابر سلطانی | برنامه نویس ارشاد جاوااسکریپت"
         description="طراحی و ساخت انواع وبسایت ها و اپلیکیشن های موبایل "

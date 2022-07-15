@@ -10,6 +10,7 @@ const Comments: React.FC<{ src: IbaseAttributes[] }> = ({ src }) => {
       h="full"
       pt="12"
       my="8"
+      mx="auto"
       overflowY="hidden"
       alignItems="center"
       flexWrap="nowrap"
@@ -23,9 +24,12 @@ const Comments: React.FC<{ src: IbaseAttributes[] }> = ({ src }) => {
       }}
     >
       <Grid
-        ml={['5', '10vw']}
+        mx="5"
         templateColumns={['repeat(4,  1fr)', 'repeat(4,  1fr)']}
         gap={4}
+        w={['none', 'full']}
+        justifyItems={['none', 'center']}
+        alignItems={['flex-end', 'center']}
       >
         {src.map((item, index) => (
           <Box key={index} display="flex">

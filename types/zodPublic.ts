@@ -52,7 +52,7 @@ const About = z.object({
   attributes: z.object({
     title: z.string(),
     media: z.string(),
-
+    desc: z.string().or(z.null()),
     content1: z.string(),
     media1: z.string(),
     content2: z.string(),

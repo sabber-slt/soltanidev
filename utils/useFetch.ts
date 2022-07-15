@@ -11,65 +11,14 @@ export const fetchPublic = async () => {
   return data?.data;
 };
 export const fetchProjects = async () => {
-  const res = await fetch(API, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Hasura-Role': 'public',
-    },
-    body: JSON.stringify({
-      query: `query MyQuery {
-        project(distinct_on: id) {
-          code1
-          code2
-          content1
-          content2
-          desc
-          id
-          img
-          img1
-          img2
-          title
-        }
-      }
-      `,
-    }),
-  });
+  const res = await fetch(`https://sabbersoltani.chabk.ir/api/projects`);
   const data = await res.json();
-  return data?.data?.project;
+  return data?.data;
 };
 export const fetchProjectsById = async (id: number) => {
-  const res = await fetch(API, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Hasura-Role': 'public',
-    },
-    body: JSON.stringify({
-      query: `query MyQuery($id:Int) {
-        project(where: {id: {_eq: $id}})  {
-          code1
-          code2
-          content1
-          content2
-          content3
-          desc
-          id
-          img
-          img1
-          img2
-          img3
-          title
-        }
-      }
-      `,
-      variables: {
-        id,
-      },
-    }),
-  });
+  const res = await fetch(`https://sabbersoltani.chabk.ir/api/projects/${id}`);
   const data = await res.json();
-  return data?.data?.project;
+  return data?.data;
 };
 
 export const fetchArticles = async () => {

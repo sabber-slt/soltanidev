@@ -9,35 +9,46 @@ import {
   useQuery,
 } from 'react-query';
 import { fetchProjectsById } from '../../utils/useFetch';
-import { ProjectProps } from '../../types/zodPublic';
+import { AboutProps } from '../../types/zodPublic';
 
 import Loading from '../../components/animation/Loading';
-import Seo from '../../components/Seo';
+import Head from 'next/head';
 
 const Home: NextPage = () => {
   const router = useRouter();
   const id = router.query.id;
 
-  const { data, isLoading, error }: UseBaseQueryResult<ProjectProps[]> =
-    useQuery<ProjectProps[], Error>(['project', id], () =>
-      fetchProjectsById(parseInt(id as string))
-    );
+  const { data, isLoading, error }: UseBaseQueryResult<AboutProps> = useQuery<
+    AboutProps,
+    Error
+  >(['project', id], () => fetchProjectsById(parseInt(id as string)));
   if (isLoading) return <Loading />;
   if (error) return <Box>Error!</Box>;
 
   return (
     <Center display="flex " flexDirection="column">
-      <Seo
-        title={`${data?.[0].title}`}
-        desc={`${data?.[0].content1}`}
-        img1={`${data?.[0].img}`}
-        img2={`${data?.[0].img1}`}
-        url={`/projects/${data?.[0].id}`}
-      />
+      <Head>
+        <title>{data?.attributes.title} </title>
+        <meta
+          content={data?.attributes.desc || 'صابر سلطانی'}
+          name="description"
+        />
+        <meta
+          property="og:url"
+          content={`https://www.soltanidev.com/edu/${id}`}
+        />
+        <meta property="og:site_name" content="صابر سلطانی" />
+        <meta
+          property="og:description"
+          content={data?.attributes.desc || 'صابر سلطانی'}
+        />
+        <meta name="twitter:image" content={data?.attributes.media} />
+      </Head>
+
       <Box display="flex" flexDirection={['column', 'row']} w="full">
         <Image
           alt=""
-          src={data?.[0].img}
+          src={data?.attributes.media}
           w={['100vw', '80vw']}
           h={['96', '70vh']}
         />
@@ -55,7 +66,7 @@ const Home: NextPage = () => {
             color={['#D81B60', 'white']}
             as="h1"
           >
-            {data?.[0].title}
+            {data?.attributes.title}
           </Text>
           <Text
             fontSize={['md', '2xl']}
@@ -74,13 +85,13 @@ const Home: NextPage = () => {
         px={['3', '8']}
         pt="10"
       >
-        {data?.[0].content1}
+        {data?.attributes.content1}
       </Text>
       <Box my="8" bg="#D81B60" px="20">
         <Image
           alt=""
           my="8"
-          src={data?.[0].img1}
+          src={data?.attributes.media1}
           w={['80', '64']}
           h={['full', '70vh']}
         />
@@ -93,13 +104,13 @@ const Home: NextPage = () => {
         px={['3', '8']}
         pb="10"
       >
-        {data?.[0].content2}
+        {data?.attributes.content2}
       </Text>
       <Box bg="#D81B60" px="20">
         <Image
           alt=""
           my="8"
-          src={data?.[0].img2}
+          src={data?.attributes.media2}
           w={['80', '64']}
           h={['full', '70vh']}
         />
@@ -111,13 +122,13 @@ const Home: NextPage = () => {
         px={['3', '8']}
         py="8"
       >
-        {data?.[0]?.content3 || ''}
+        {data?.attributes.content3 || ''}
       </Text>
       <Box bg="#D81B60" px="20" my="5">
         <Image
           alt=""
           my="8"
-          src={data?.[0].img3}
+          src={data?.attributes.media3}
           w={['80', '64']}
           h={['full', '70vh']}
         />

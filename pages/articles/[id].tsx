@@ -12,7 +12,7 @@ import { fetchArticlesById } from '../../utils/useFetch';
 import { ArticlesProps } from '../../types/zodPublic';
 
 import Loading from '../../components/animation/Loading';
-import { NextSeo } from 'next-seo';
+import Head from 'next/head';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -27,25 +27,17 @@ const Home: NextPage = () => {
 
   return (
     <Center display="flex " flexDirection="column">
-      <NextSeo
-        title={data?.attributes.title}
-        description={data?.attributes.desc}
-        canonical={`https://www.soltanidev.com/articles/${id}`}
-        openGraph={{
-          title: data?.attributes.title,
-          description: data?.attributes.desc,
-          url: `https://www.soltanidev.com/articles/${id}`,
-          type: 'article',
-          images: [
-            {
-              url: `${data?.attributes.media}`,
-              width: 800,
-              height: 600,
-              alt: data?.attributes.title,
-            },
-          ],
-        }}
-      />
+      <Head>
+        <title>{data?.attributes.title} </title>
+        <meta content={data?.attributes.desc} name="description" />
+        <meta
+          property="og:url"
+          content={`https://www.soltanidev.com/articles/${id}`}
+        />
+        <meta property="og:site_name" content="صابر سلطانی" />
+        <meta property="og:description" content={data?.attributes.desc} />
+        <meta name="twitter:image" content={data?.attributes.media} />
+      </Head>
       <Box display="flex" flexDirection={['column', 'row']} w="full">
         <Image
           alt=""
