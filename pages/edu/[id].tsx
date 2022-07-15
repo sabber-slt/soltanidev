@@ -12,14 +12,14 @@ import { fetchEduById } from '../../utils/useFetch';
 import { EduProps } from '../../types/zodPublic';
 
 import Loading from '../../components/animation/Loading';
-import Seo from '../../components/Seo';
+import { NextSeo } from 'next-seo';
 
 const Home: NextPage = () => {
   const router = useRouter();
   const id = router.query.id;
 
-  const { data, isLoading, error }: UseBaseQueryResult<EduProps[]> = useQuery<
-    EduProps[],
+  const { data, isLoading, error }: UseBaseQueryResult<EduProps> = useQuery<
+    EduProps,
     Error
   >(['eduById', id], () => fetchEduById(parseInt(id as string)), {
     refetchOnWindowFocus: false,
@@ -37,17 +37,29 @@ const Home: NextPage = () => {
 
   return (
     <Center display="flex " flexDirection="column">
-      <Seo
-        title={`${data?.[0].title}`}
-        desc={`${data?.[0].des1}`}
-        img1={`${data?.[0].img}`}
-        img2="https://res.cloudinary.com/dupfwlkgb/image/upload/v1656669395/soltanidev_s0vc6l.png"
-        url={`/edu/${data?.[0].id}`}
+      <NextSeo
+        title={data?.attributes.title}
+        description={data?.attributes.desc}
+        canonical={`https://www.soltanidev.com/edu/${id}`}
+        openGraph={{
+          title: data?.attributes.title,
+          description: data?.attributes.desc,
+          url: `https://www.soltanidev.com/edu/${id}`,
+          type: 'article',
+          images: [
+            {
+              url: `${data?.attributes.media}`,
+              width: 800,
+              height: 600,
+              alt: data?.attributes.title,
+            },
+          ],
+        }}
       />
       <Box display="flex" flexDirection={['column', 'row']} w="full">
         <Image
           alt=""
-          src={data?.[0].img}
+          src={data?.attributes.media}
           w={['100vw', '80vw']}
           h={['96', '70vh']}
         />{' '}
@@ -65,7 +77,7 @@ const Home: NextPage = () => {
             color={['#D81B60', 'white']}
             as="h1"
           >
-            {data?.[0].title}
+            {data?.attributes.title}
           </Text>
           <Text
             fontSize={['md', '2xl']}
@@ -85,9 +97,9 @@ const Home: NextPage = () => {
         pt="10"
         as="p"
       >
-        {data?.[0].des1}
+        {data?.attributes.content1}
       </Text>
-      {data?.[0].cod1 !== null && (
+      {data?.attributes.code1 !== null && (
         <Code
           fontWeight="bold"
           py="5"
@@ -101,7 +113,7 @@ const Home: NextPage = () => {
           bg="gray.800"
           color="white"
         >
-          {data?.[0].cod1}
+          {data?.attributes.code1}
         </Code>
       )}
       <Text
@@ -112,9 +124,9 @@ const Home: NextPage = () => {
         py="7"
         as="p"
       >
-        {data?.[0].des2}
+        {data?.attributes.content2}
       </Text>
-      {data?.[0].cod2 !== null && (
+      {data?.attributes.code2 !== null && (
         <Code
           fontWeight="bold"
           py="5"
@@ -128,7 +140,7 @@ const Home: NextPage = () => {
           bg="gray.800"
           color="white"
         >
-          {data?.[0].cod2}
+          {data?.attributes.code2}
         </Code>
       )}
       <Text
@@ -139,9 +151,9 @@ const Home: NextPage = () => {
         py="7"
         as="p"
       >
-        {data?.[0].des3}
+        {data?.attributes.content3}
       </Text>
-      {data?.[0].cod3 !== null && (
+      {data?.attributes.code3 !== null && data?.attributes.code3 !== '' && (
         <Code
           fontWeight="bold"
           py="5"
@@ -155,11 +167,11 @@ const Home: NextPage = () => {
           bg="gray.800"
           color="white"
         >
-          {data?.[0].cod3}
+          {data?.attributes.code3}
         </Code>
       )}
       <div>
-        {data?.[0].des4 !== null && (
+        {data?.attributes.content4 !== null && (
           <Text
             whiteSpace="break-spaces"
             fontSize={['lg', '2xl']}
@@ -167,11 +179,11 @@ const Home: NextPage = () => {
             px={['3', '8']}
             py="5"
           >
-            {data?.[0].des4}
+            {data?.attributes.content4}
           </Text>
         )}
       </div>
-      {data?.[0].cod4 !== null && (
+      {data?.attributes.code4 !== null && data?.attributes.code4 !== '' && (
         <Code
           fontWeight="bold"
           py="5"
@@ -185,7 +197,38 @@ const Home: NextPage = () => {
           bg="gray.800"
           color="white"
         >
-          {data?.[0].cod4}
+          {data?.attributes.code4}
+        </Code>
+      )}
+      <div>
+        {data?.attributes.content5 !== null ||
+          (data?.attributes.content5 !== '' && (
+            <Text
+              whiteSpace="break-spaces"
+              fontSize={['lg', '2xl']}
+              color="#35515E"
+              px={['3', '8']}
+              py="5"
+            >
+              {data?.attributes.content5}
+            </Text>
+          ))}
+      </div>
+      {data?.attributes.code5 !== null && data?.attributes.code5 !== '' && (
+        <Code
+          fontWeight="bold"
+          py="5"
+          my={['3', '10']}
+          px="2"
+          w={['full', '80vw']}
+          whiteSpace="pre-wrap"
+          overflowX="auto"
+          fontSize={['xs', 'xl']}
+          style={{ direction: 'ltr' }}
+          bg="gray.800"
+          color="white"
+        >
+          {data?.attributes.code5}
         </Code>
       )}
     </Center>

@@ -14,8 +14,8 @@ import { fetchAbout } from '../utils/useFetch';
 import { NextSeo } from 'next-seo';
 
 const Home: NextPage = () => {
-  const { data, isLoading, error }: UseBaseQueryResult<AboutProps[]> = useQuery<
-    AboutProps[],
+  const { data, isLoading, error }: UseBaseQueryResult<AboutProps> = useQuery<
+    AboutProps,
     Error
   >('edu', fetchAbout);
   if (isLoading) return <Loading />;
@@ -32,9 +32,9 @@ const Home: NextPage = () => {
         <Box display="flex" flexDirection={['column', 'row']} w="full">
           <Image
             alt=""
-            src={data?.[0].img}
+            src={data?.attributes.media}
             w={['100vw', '80vw']}
-            h={['96', '70vh']}
+            h={['80', '70vh']}
           />{' '}
           <Center
             display="flex "
@@ -46,7 +46,7 @@ const Home: NextPage = () => {
             <Image
               alt="صابر سلطانی"
               w={['36', '40']}
-              h={['40', '56']}
+              h={['36', '40']}
               src="https://res.cloudinary.com/dupfwlkgb/image/upload/v1648663004/3_txhflv.png"
             />
             <Text
@@ -55,12 +55,26 @@ const Home: NextPage = () => {
               px="5"
               color={['#D81B60', 'white']}
             >
-              {data?.[0].title}
+              {data?.attributes.title}
             </Text>
           </Center>
         </Box>
         <Text my={['8']} py="5" whiteSpace="pre-line" fontSize={['lg', '2xl']}>
-          {data?.[0].content}
+          {data?.attributes.content1}
+        </Text>
+        {data?.attributes.media1 !== null && data?.attributes.media1 !== '' && (
+          <Image
+            alt="صابر سلطانی"
+            w={['36', '40']}
+            h={['40', '56']}
+            src={data?.attributes.media1}
+          />
+        )}
+        <Text my={['8']} py="5" whiteSpace="pre-line" fontSize={['lg', '2xl']}>
+          {data?.attributes.content2}
+        </Text>
+        <Text my={['8']} py="5" whiteSpace="pre-line" fontSize={['lg', '2xl']}>
+          {data?.attributes.content3}
         </Text>
       </Box>
     </Box>

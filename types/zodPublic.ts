@@ -15,28 +15,56 @@ const Project = z.object({
   title: z.string(),
 });
 
-const Edu = z.object({
-  title: z.string(),
-  img: z.string(),
+const Articles = z.object({
+  attributes: z.object({
+    title: z.string(),
+    desc: z.string(),
+    media: z.string(),
+    content1: z.string(),
+    media1: z.string(),
+    content2: z.string(),
+    media2: z.string(),
+    content3: z.string(),
+    media3: z.string(),
+  }),
   id: z.number(),
-  des1: z.string(),
-  cod1: z.string(),
-  des2: z.string(),
-  cod2: z.string(),
-  des3: z.string(),
-  cod3: z.string(),
-  des4: z.string(),
-  cod4: z.string(),
+});
+const EduProp = z.object({
+  attributes: z.object({
+    title: z.string(),
+    desc: z.string(),
+    media: z.string(),
+    content1: z.string(),
+    code1: z.string(),
+    content2: z.string(),
+    code2: z.string(),
+    content3: z.string(),
+    code3: z.string(),
+    content4: z.string(),
+    code4: z.string(),
+    content5: z.string(),
+    code5: z.string(),
+  }),
+  id: z.number(),
 });
 
 const About = z.object({
-  title: z.string(),
-  img: z.string(),
-  img1: z.string(),
-  img2: z.string(),
-  content: z.string(),
+  attributes: z.object({
+    title: z.string(),
+    media: z.string(),
+
+    content1: z.string(),
+    media1: z.string(),
+    content2: z.string(),
+    media2: z.string(),
+    content3: z.string(),
+    media3: z.string(),
+  }),
+  id: z.number(),
 });
 
 export type ProjectProps = z.infer<typeof Project>;
-export type EduProps = z.infer<typeof Edu>;
+
 export type AboutProps = z.infer<typeof About>;
+export type ArticlesProps = z.infer<typeof Articles>;
+export type EduProps = z.infer<typeof EduProp>;

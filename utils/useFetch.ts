@@ -73,132 +73,30 @@ export const fetchProjectsById = async (id: number) => {
 };
 
 export const fetchArticles = async () => {
-  const res = await fetch(API, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Hasura-Role': 'public',
-    },
-    body: JSON.stringify({
-      query: `query MyQuery {
-        articles {
-          title
-          id
-          img1          
-        }
-      }
-      `,
-    }),
-  });
+  const res = await fetch(`https://sabbersoltani.chabk.ir/api/articles`);
   const data = await res.json();
-  return data?.data?.articles;
+  return data?.data;
 };
 
 export const fetchArticlesById = async (id: number) => {
-  const res = await fetch(API, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Hasura-Role': 'public',
-    },
-    body: JSON.stringify({
-      query: `query MyQuery($id:Int){
-        articles(where: {id: {_eq: $id}})  {
-          title
-          id
-          img1 
-          img2
-          img3
-          content1
-          content2
-          content3
-        }
-      }
-      `,
-      variables: {
-        id,
-      },
-    }),
-  });
+  const res = await fetch(`https://sabbersoltani.chabk.ir/api/articles/${id}`);
   const data = await res.json();
-  return data?.data?.articles;
+  return data?.data;
 };
 
 export const fetchEdu = async () => {
-  const res = await fetch(API, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Hasura-Role': 'public',
-    },
-    body: JSON.stringify({
-      query: `query MyQuery {
-        edu(distinct_on: id) {
-          title,
-          img,
-          id
-        }
-      }
-      `,
-    }),
-  });
+  const res = await fetch(`https://sabbersoltani.chabk.ir/api/edus`);
   const data = await res.json();
-  return data?.data?.edu;
+  return data?.data;
 };
 export const fetchEduById = async (id: number) => {
-  const res = await fetch(API, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Hasura-Role': 'public',
-    },
-    body: JSON.stringify({
-      query: `query MyQuery($id: Int) {
-        edu(where: {id: {_eq: $id}}) {
-          title
-          img
-          id
-          des1
-          cod1
-          des2
-          cod2
-          des3
-          cod3
-          des4
-          cod4
-        }
-      }
-      `,
-      variables: {
-        id,
-      },
-    }),
-  });
+  const res = await fetch(`https://sabbersoltani.chabk.ir/api/edus/${id}`);
   const data = await res.json();
-  return data?.data?.edu;
+  return data?.data;
 };
 
 export const fetchAbout = async () => {
-  const res = await fetch(API, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Hasura-Role': 'public',
-    },
-    body: JSON.stringify({
-      query: `query MyQuery($id:String) {
-        about {
-          title
-          content
-          img
-          img1
-          img2
-        
-        }
-      }
-      `,
-    }),
-  });
+  const res = await fetch(`https://sabbersoltani.chabk.ir/api/abouts/1`);
   const data = await res.json();
-  return data?.data?.about;
+  return data?.data;
 };

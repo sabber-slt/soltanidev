@@ -18,15 +18,15 @@ import {
   useQuery,
 } from 'react-query';
 import { useRouter } from 'next/router';
-import { ProjectProps } from '../../types/zodPublic';
+import { ArticlesProps } from '../../types/zodPublic';
 import { fetchArticles } from '../../utils/useFetch';
 import Loading from '../../components/animation/Loading';
 import Seo from '../../components/Seo';
 
 const Home: NextPage = () => {
   const router = useRouter();
-  const { data, isLoading, error }: UseBaseQueryResult<ProjectProps[]> =
-    useQuery<ProjectProps[], Error>('articles', fetchArticles);
+  const { data, isLoading, error }: UseBaseQueryResult<ArticlesProps[]> =
+    useQuery<ArticlesProps[], Error>('articles', fetchArticles);
   if (isLoading) return <Loading />;
   if (error) return <Box>Error!</Box>;
 
@@ -112,7 +112,7 @@ const Home: NextPage = () => {
                 h="72"
                 objectFit="cover"
                 objectPosition="center"
-                src={item.img1}
+                src={item.attributes.media}
               />
               <Box position="absolute">
                 <Box h="72" bg="rgba(53,81,94,0.5)">
@@ -125,7 +125,7 @@ const Home: NextPage = () => {
                       textAlign="center"
                       as="h1"
                     >
-                      {item.title}
+                      {item.attributes.title}
                     </Text>
                     <Button
                       zIndex={100}
