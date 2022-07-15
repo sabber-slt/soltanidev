@@ -9,12 +9,12 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Ibase } from '../../types/publicInterfaces';
+import { IbaseAttributes } from '../../types/publicInterfaces';
 import Link from 'next/link';
 import { ArrowBackIcon } from '@chakra-ui/icons';
 import { useRouter } from 'next/router';
 
-const Propject: React.FC<{ src: Ibase[] }> = ({ src }) => {
+const Propject: React.FC<{ src: IbaseAttributes[] }> = ({ src }) => {
   const router = useRouter();
   return (
     <>
@@ -54,7 +54,7 @@ const Propject: React.FC<{ src: Ibase[] }> = ({ src }) => {
             mx="5"
             my="10"
           >
-            <Link href={`/projects/${item.image}`}>
+            <Link href={`/projects/${item.attributes.slug}`}>
               <a>
                 <Image
                   alt=""
@@ -62,7 +62,7 @@ const Propject: React.FC<{ src: Ibase[] }> = ({ src }) => {
                   h={['96']}
                   borderRadius={20}
                   overflow="hidden"
-                  src={item.info[0].img1}
+                  src={item.attributes.img}
                   boxShadow="dark-lg"
                   objectFit="cover"
                   bg="green"
@@ -88,7 +88,7 @@ const Propject: React.FC<{ src: Ibase[] }> = ({ src }) => {
                       color="white"
                       fontSize="2xl"
                     >
-                      {item.title}
+                      {item.attributes.title}
                     </Text>
                   </Center>
                 </Box>

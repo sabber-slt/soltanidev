@@ -8,10 +8,10 @@ import {
   useQuery,
 } from 'react-query';
 import Loading from '../components/animation/Loading';
-import Seo from '../components/Seo';
 
 import { AboutProps } from '../types/zodPublic';
 import { fetchAbout } from '../utils/useFetch';
+import { NextSeo } from 'next-seo';
 
 const Home: NextPage = () => {
   const { data, isLoading, error }: UseBaseQueryResult<AboutProps[]> = useQuery<
@@ -23,12 +23,10 @@ const Home: NextPage = () => {
 
   return (
     <Box color="#35515E">
-      <Seo
+      <NextSeo
         title="درباره صابر سلطانی بیشتر بدانید"
-        desc="صابر سلطانی برنامه نویس ارشد جاوااسکریپت با انجام چندیدن پروژه بین المللی تئانسته اسم خود را در میان برنامه نویسان جهانی بگنجاند"
-        img1="https://res.cloudinary.com/dupfwlkgb/image/upload/v1656669395/soltanidev_s0vc6l.png"
-        img2="https://res.cloudinary.com/dupfwlkgb/image/upload/v1656913721/pexels-christina-morillo-1181359_zado2e.jpg"
-        url="/about"
+        description="صابر سلطانی برنامه نویس ارشد جاوااسکریپت با انجام چندیدن پروژه بین المللی تئانسته اسم خود را در میان برنامه نویسان جهانی بگنجاند"
+        canonical="https://www.soltanidev.com/about"
       />
       <Box p="7">
         <Box display="flex" flexDirection={['column', 'row']} w="full">

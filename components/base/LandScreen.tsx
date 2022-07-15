@@ -10,7 +10,7 @@ import {
 import { motion } from 'framer-motion';
 
 import React from 'react';
-import { Ibase } from '../../types/publicInterfaces';
+import { Iinfo } from '../../types/publicInterfaces';
 
 const animationKeyframes = keyframes`
   0% { transform: scale(1) rotate(0)}
@@ -21,27 +21,21 @@ const animationKeyframes = keyframes`
 `;
 const animation = `${animationKeyframes} 3s ease-in-out infinite`;
 
-const LandScreen: React.FC<{ src: Ibase }> = ({ src }) => {
+const LandScreen: React.FC<{ src: Iinfo }> = ({ src }) => {
   return (
     <Box w="100%" h={['90vh', '100vh']} position="relative" bg="rgb(53,81,94)">
       <AspectRatio
         position="absolute"
-        w="100vw"
-        // objectFit="cover"
-        maxH={['90vh', '100vh']}
+        w="full"
+        objectFit="cover"
+        maxH={['90vh', '2xl']}
         zIndex={0}
         opacity={0.7}
-        ratio={[1 / 4, 1, 1 / 2, 1 / 2]}
+        ratio={[1 / 4, 1, 1, 1]}
       >
-        <Image
-          alt=""
-          src="https://res.cloudinary.com/dupfwlkgb/image/upload/v1656775926/WhatsApp_Image_2022-07-02_at_8.00.56_PM_lme6v0.jpg"
-          w="full"
-          h="full"
-          filter={`brightness(1.2)`}
-          opacity={0.9}
-          objectFit="cover"
-        />
+        <video autoPlay loop muted playsInline>
+          <source src={'/video.webm'} type="video/webm; codecs=vp9" />
+        </video>
       </AspectRatio>
       <Center
         display="flex"

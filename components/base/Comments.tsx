@@ -1,9 +1,9 @@
 import { Box, Center, Flex, Grid, Image, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Iinfo } from '../../types/publicInterfaces';
+import { IbaseAttributes } from '../../types/publicInterfaces';
 
-const Comments: React.FC<{ src: Iinfo[] }> = ({ src }) => {
+const Comments: React.FC<{ src: IbaseAttributes[] }> = ({ src }) => {
   return (
     <Flex
       w="full"
@@ -38,7 +38,12 @@ const Comments: React.FC<{ src: Iinfo[] }> = ({ src }) => {
               w="72"
             >
               <Box
-                bg={item.id === 1 || item.id === 3 ? '#D81B60' : '#35515E'}
+                bg={
+                  item.attributes.title === 'برنامه نویسی با زبان typescript' ||
+                  item.attributes.title === 'برنامه نویس Front-End'
+                    ? '#D81B60'
+                    : '#35515E'
+                }
                 position="relative"
                 w="72"
                 h="96"
@@ -50,7 +55,7 @@ const Comments: React.FC<{ src: Iinfo[] }> = ({ src }) => {
                     w="28"
                     h="28"
                     objectFit="cover"
-                    src={item.img}
+                    src={item.attributes.img}
                   />
                 </Center>
                 <Text
@@ -64,7 +69,7 @@ const Comments: React.FC<{ src: Iinfo[] }> = ({ src }) => {
                   zIndex={100}
                   px="7"
                 >
-                  {item.title}
+                  {item.attributes.title}
                 </Text>
                 <Text
                   as={motion.div}
@@ -77,7 +82,7 @@ const Comments: React.FC<{ src: Iinfo[] }> = ({ src }) => {
                   zIndex={100}
                   px="4"
                 >
-                  {item.content}
+                  {item.attributes.content}
                 </Text>
               </Box>
             </VStack>

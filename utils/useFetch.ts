@@ -1,31 +1,14 @@
 export const API = 'https://soltanidev.hasura.app/v1/graphql';
+export const DB = process.env.DB_URL;
 
 export const HEADERS = {
   'Content-Type': 'application/json',
   'X-Hasura-Role': 'public',
 };
 export const fetchPublic = async () => {
-  const res = await fetch(API, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Hasura-Role': 'public',
-    },
-    body: JSON.stringify({
-      query: `query MyQuery {
-          base {
-            content
-            id
-            image
-            info
-            title
-            video
-          }
-        }`,
-    }),
-  });
+  const res = await fetch(`https://sabbersoltani.chabk.ir/api/bases`);
   const data = await res.json();
-  return data?.data?.base;
+  return data?.data;
 };
 export const fetchProjects = async () => {
   const res = await fetch(API, {

@@ -3,8 +3,7 @@ export interface Iinfo {
   id: number;
   img: string;
   title: string;
-  img1: string | undefined;
-  img2?: string;
+  slug: string | undefined;
 }
 
 export interface Ibase {
@@ -17,4 +16,7 @@ export interface Ibase {
   video?: string | undefined;
 
   page?: string | undefined;
+}
+export interface IbaseAttributes {
+  attributes: Iinfo;
 }

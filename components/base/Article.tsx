@@ -10,16 +10,16 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Ibase } from '../../types/publicInterfaces';
+import { IbaseAttributes } from '../../types/publicInterfaces';
 import Link from 'next/link';
 import { ArrowBackIcon } from '@chakra-ui/icons';
 import { useRouter } from 'next/router';
 
-const Article: React.FC<{ src: Ibase[]; page: string; txt: string }> = ({
-  src,
-  page,
-  txt,
-}) => {
+const Article: React.FC<{
+  src: IbaseAttributes[];
+  page: string;
+  txt: string;
+}> = ({ src, page, txt }) => {
   const router = useRouter();
   return (
     <Center
@@ -73,7 +73,7 @@ const Article: React.FC<{ src: Ibase[]; page: string; txt: string }> = ({
               h={['48', '50vh']}
             >
               <Center w="full">
-                <Link href={`/${page}/${item.image}`}>
+                <Link href={`/${page}/${item.attributes.slug}`}>
                   <a>
                     <Center w="full">
                       <Image
@@ -81,7 +81,7 @@ const Article: React.FC<{ src: Ibase[]; page: string; txt: string }> = ({
                         w={['40', '40vw']}
                         h={['48', '50vh']}
                         borderRadius={20}
-                        src={item.info[0].img1}
+                        src={item.attributes.img}
                         objectFit="cover"
                         objectPosition="center"
                         boxShadow="dark-lg"
@@ -106,7 +106,7 @@ const Article: React.FC<{ src: Ibase[]; page: string; txt: string }> = ({
                             color="#D81B60"
                             fontSize={['md', 'xl']}
                           >
-                            {item.title}
+                            {item.attributes.title}
                           </Text>
                         </Center>
                       </Box>

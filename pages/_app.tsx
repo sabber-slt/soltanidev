@@ -10,6 +10,7 @@ import Script from 'next/script';
 import * as gtag from '../utils/gtag';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { NextSeo } from 'next-seo';
 
 // import Head from 'next/head';
 
@@ -39,6 +40,45 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router.events]);
   return (
     <>
+      <NextSeo
+        title="صابر سلطانی | برنامه نویس ارشاد جاوااسکریپت"
+        description="طراحی و ساخت انواع وبسایت ها و اپلیکیشن های موبایل "
+        defaultTitle="صابر سلطانی"
+        canonical="https://www.soltanidev.com/"
+        openGraph={{
+          url: 'https://www.soltanidev.com/',
+          title: 'صابر سلطانی | برنامه نویس ارشاد جاوااسکریپت',
+          description: 'طراحی و ساخت انواع وبسایت ها و اپلیکیشن های موبایل ',
+
+          locale: 'ir_IR',
+          images: [
+            {
+              url: 'https://res.cloudinary.com/dupfwlkgb/image/upload/v1656669395/soltanidev_s0vc6l.png',
+              width: 500,
+              height: 500,
+              alt: 'صابر سلطانی',
+              type: 'image/png',
+            },
+            {
+              url: 'https://res.cloudinary.com/dupfwlkgb/image/upload/v1656669245/screen_z0ktaf.png',
+              width: 500,
+              height: 500,
+              alt: 'صابر سلطانی',
+              type: 'image/png',
+            },
+          ],
+          site_name: 'صابر سلطانی | SoltaniDev',
+        }}
+        robotsProps={{
+          nosnippet: true,
+          notranslate: true,
+          noimageindex: true,
+          noarchive: true,
+          maxSnippet: -1,
+          maxImagePreview: 'none',
+          maxVideoPreview: -1,
+        }}
+      />
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
