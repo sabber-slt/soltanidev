@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Center } from '@chakra-ui/react';
 import type { NextPage } from 'next';
 import {
   dehydrate,
@@ -43,7 +43,9 @@ const Home: NextPage = () => {
         <Propject src={item?.slice(4, 7)} />
         <Article txt="مقالات عمومی" page="articles" src={item?.slice(7, 11)} />
         <Article txt="آموزش های تخصصی" page="edu" src={item?.slice(11, 15)} />
-        <Comments src={item?.slice(15, 19)} />
+        <Center w="100%">
+          <Comments src={item?.slice(15, 19)} />
+        </Center>
       </>
     </Box>
   );

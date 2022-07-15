@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import '@fontsource/lalezar';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
@@ -9,7 +9,7 @@ import Layout from '../components/Layout';
 import Script from 'next/script';
 import * as gtag from '../utils/gtag';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { NextSeo } from 'next-seo';
 
 // import Head from 'next/head';
@@ -19,15 +19,9 @@ const AppContainer = styled.div`
   direction: rtl;
 `;
 
-const reactQueryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 7 * 1000,
-    },
-  },
-});
-
 function MyApp({ Component, pageProps }: AppProps) {
+  const [queryClient] = useState(() => new QueryClient());
+
   const router = useRouter();
   useEffect(() => {
     const handleRouteChange = (url: URL) => {
@@ -97,10 +91,11 @@ function MyApp({ Component, pageProps }: AppProps) {
           `,
         }}
       />
-      <QueryClientProvider client={reactQueryClient}>
+      <QueryClientProvider client={queryClient} contextSharing={true}>
         <ReactQueryDevtools initialIsOpen={false} />
         <Hydrate state={pageProps.dehydrateState}>
           <ChakraProvider>
+            <CSSReset />
             <AppContainer>
               <Layout>
                 <Component {...pageProps} />

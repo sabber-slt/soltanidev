@@ -28,7 +28,7 @@ const LandScreen: React.FC<{ src: Iinfo }> = ({ src }) => {
         position="absolute"
         w="full"
         objectFit="cover"
-        maxH={['90vh', '2xl']}
+        maxH={['90vh', '100vh']}
         zIndex={0}
         opacity={0.7}
         ratio={[1 / 4, 1, 1, 1]}
@@ -63,6 +63,7 @@ const LandScreen: React.FC<{ src: Iinfo }> = ({ src }) => {
           whileInView={{ opacity: 1, x: 0 }}
           zIndex={100}
           my="4"
+          px="4"
           fontSize={['2xl', '5xl']}
           whiteSpace="pre-line"
           textAlign="center"

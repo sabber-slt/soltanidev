@@ -30,6 +30,7 @@ const Contact: NextPage = () => {
     handleSubmit,
     register,
     formState: { isSubmitting },
+    formState: { errors },
   } = useForm<Props>();
 
   async function onSubmit(values: Props) {
@@ -94,7 +95,8 @@ const Contact: NextPage = () => {
               </FormLabel>
               <Input
                 id="name"
-                type={'number'}
+                data-testid="name"
+                type="text"
                 color="white"
                 bgColor="rgba(34,84,61,0.1)"
                 {...register('name', {
@@ -107,16 +109,24 @@ const Contact: NextPage = () => {
               <Input
                 id="phone"
                 type={'number'}
+                data-testid="phone"
                 color="white"
                 bgColor="rgba(34,84,61,0.1)"
                 {...register('phone', {
                   required: 'This is required',
                 })}
               />
+              {errors.phone && (
+                <Text color="white" data-testid="message">
+                  This field is required
+                </Text>
+              )}
+
               <FormLabel mt="3" htmlFor="phone" color="white">
                 توضیحات
               </FormLabel>
               <Textarea
+                data-testid="text"
                 {...register('content', {
                   required: 'This is required',
                 })}
@@ -127,6 +137,7 @@ const Contact: NextPage = () => {
                 <VStack>
                   <Button
                     mt={4}
+                    data-testid="submit"
                     colorScheme="white"
                     isLoading={isSubmitting}
                     type="submit"

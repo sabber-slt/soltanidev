@@ -11,6 +11,7 @@ This is a [SoltaniDev](https://soltanidev.com/) portfolio bootstrapped with [`cr
 - 🌈 Zustand for state management
 - 🗂 PWA technology for Progressive Web Apps
 - 🔥 Zod for type-safe data fetching
+- 🛠 Testing with Jest
 
 ## Philosophy
 
